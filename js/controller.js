@@ -401,8 +401,8 @@ function save(){
     const image = gElCanvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
     memObj.push(image)
     saveToStorage('memObject',memObj)
-    console.log('save mems to storage;')
-    console.log('image',image);
+    //console.log('save mems to storage;')
+    //console.log('image',image);
   }    
 }
 /**************************************************************************************** */
