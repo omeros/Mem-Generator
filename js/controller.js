@@ -417,24 +417,26 @@ function mems(){
   gSavedMeme = memObj;
   var idx=0;
   var i = 1;
-  const strHtmls = memObj.map( (img)=> {
-  return `
-  <img class="saved-mems-img saved-image${i++}" src="${img}"  alt="">`
-})
-document.querySelector('.saved-mems-grid-container').innerHTML = strHtmls.join('')
-for ( i = 1; i < memObj.length + 1; i++) {
-  const elImg = document.querySelector(`.saved-image${i}`);
-  elImg.addEventListener('click', function (num) {
-    return function () {
-      openEditModal(num,true);
-    };
-  }(i));
-  elImg.addEventListener('touchstart', function (num) {
-    return function () {
-      openEditModal(num,true);
-    };
-  }(i));
-}
+  if(memObj){
+    const strHtmls = memObj.map( (img)=> {
+    return `
+    <img class="saved-mems-img saved-image${i++}" src="${img}"  alt="">`
+  })
+  document.querySelector('.saved-mems-grid-container').innerHTML = strHtmls.join('')
+  for ( i = 1; i < memObj.length + 1; i++) {
+    const elImg = document.querySelector(`.saved-image${i}`);
+    elImg.addEventListener('click', function (num) {
+      return function () {
+        openEditModal(num,true);
+      };
+    }(i));
+    elImg.addEventListener('touchstart', function (num) {
+      return function () {
+        openEditModal(num,true);
+      };
+    }(i));
+  }
+  }
 }
 
 function closeModalMem(){
