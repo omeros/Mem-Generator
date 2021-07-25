@@ -84,7 +84,9 @@ body {
     border-radius: 10px;
 }
 
-
+.navbar-conntainer{
+    width: 100vw;
+}
 
 .navbar-conntainer .nav-item:hover {
     opacity: 0.5;
@@ -144,6 +146,7 @@ body {
 }
 .flex-for-header{
     display: flex; 
+    justify-content:flex-end;
 }
 
 .align-item-center {
@@ -511,10 +514,7 @@ cursor: pointer;
     }
     .navbar-conntainer{
         width:50vw;
-       
-   
-    box-shadow: inset 1px  0 0  #1d1d1d;
- 
+        box-shadow: inset 1px  0 0  #1d1d1d;
     }
     
     .navbar-conntainer .nav-item {
