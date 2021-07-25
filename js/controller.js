@@ -415,7 +415,6 @@ function mems(){
   const memObj= JSON.parse(val)
   //console.log('mems from localstorage',memObj)
   gSavedMeme = memObj;
-  var idx=0;
   var i = 1;
   if(memObj){
     const strHtmls = memObj.map( (img)=> {

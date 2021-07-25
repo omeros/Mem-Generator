@@ -11,11 +11,11 @@
 <body  onload="init()">     
     <header class="main-header logo">
         <div class="main-container">
-            <div class="header-container  flex align-item-center spcae-between">
+            <div class="header-container  flex-for-header align-item-center-for-header spcae-between">
                 <div class="capitalize logo ">   <img  class="logo-icon"   src="img/logo.png" />   </div>
-                    <ul class="navbar-conntainer clean-ul flex">
-                        <li><a  class=" flex align-item-center  nav-item mems">Memes</a></li>
-                        <li><a  class="give-border-rigth  flex align-item-center capitalize nav-item about">About</a></li>
+                    <ul class="navbar-conntainer clean-ul flex-for-header">
+                        <li><a  class=" flex-for-header align-item-center  nav-item mems">Memes</a></li>
+                        <li><a  class="give-border-rigth  flex-for-header align-item-center capitalize nav-item about">About</a></li>
                     </ul>
             </div>
         </div>
@@ -24,7 +24,7 @@
         <div class="search-div">
             <div class="saved-mems-modal-main ">
                 <button class="closeModalMem" > <img src="img/close.png" alt="">  </button>
-                <div  class="modal-mems flex flex-direction-column ">
+                <div  class="modal-mems flex2 ">
                     <div class="saved-mems-grid-container">
         
                     </div>
@@ -35,9 +35,8 @@
         <div class="site-search"></div>
             <div class="grid-container"> 
             </div>
-            <div class="upload-img">   
-                <input class="file-Butoon round"  type="file" accept="image/*" onchange="uploadImage(event)" id="file-input">
-                <!-- <img  id='img-loader' class="test"  > -->
+            <div class="upload-img">          
+                <input class="browse"   src="/media/examples/login-button.png" type="file" accept="image/*" placeholder="BROWSE" onchange="uploadImage(event)" id="file-input">
             </div>
         </div>
         <br/>
@@ -45,53 +44,55 @@
     
     <div class="modal">
         <button class="close-modal" onclick="closeModal(this)"> <img src="img/close.png" alt="">  </button>
-        <div class="modal-header">
+        <div class="modal-header"></div>
+        <div class="flex align-item-center justify-content-center">
+            <div class="modal-img">
+            <!-- the canvas -->
+                <div class="canvas-container">
+                    <canvas id="my-canvas" width="360" height="360" ></canvas>
+                </div> 
+            </div>
+            <section class="modal-container align-item-center justify-content-center"  >
+                <input type="text" class="insid-modal flex txt-mem" name="q"  placeholder="Insert Text"  maxlength="14">
+                <button class="btn-modal" > <img class="up" src="ICONS/up.png" alt="">  </button>
+                <button class="btn-modal" > <img class="down" src="ICONS/down.png" alt="">  </button>
+                <button class="btn-modal" > <img class="up-down" src="ICONS/upDown.png" alt="">  </button>
+                <button class="btn-modal" > <img  class="big-icon add" id="addId"   src="ICONS/add.png" alt=""  >  </button>
+                <button class="btn-modal" > <img  class="delete" src="ICONS/delete.png" alt="">  </button>
+                <div class="modal-btn-container flex">
+                <div>
+                        <button class="btn-modal" > <img class="apluse" src="ICONS/aPluse.png" alt="">  </button>
+                        <button class="btn-modal  " > <img class="aminus  big-icon "  src="ICONS/aminus.png" alt="">    </button>
+                        <button class="btn-modal" > <img class="align-to-left"  src="ICONS/align-to-left.png" alt="">  </button>
+                        <button class="btn-modal" > <img class="align-center"  src="ICONS/align-center.png" alt="">  </button>
+                        <button class="btn-modal" > <img class="align-to-right"  src="ICONS/align-to-rigth.png" alt="">  </button>
+                </div>                                    
+                <div>                                          
+                        <select class="impact" onchange="choosFonts()" name="choosFonts">
+                            <option class="impact" value="1">IMPACT</option>
+                            <option class="lato" value="2">LATO</option>
+                            <option class="euro" value="3">EURO</option>
+                        </select>      
+                        <input class="txtcol"  type="color" id="stroke-color" name="colorTxt" form="test" value="#ff0000" /> 
+                        <button class="strok-modal" >  <img  class="stroke-color" src="ICONS/tools.png" alt="">  </button>         
+                        <input class="font-col"  type="color" id="" name="fontcolor" form="" value="#ff0000" />
+                        <button class="font-modal" >   <img class="font-color big-icon"  src="ICONS/paint.png" alt=""></button> 
+                </div>
+                </div>     
+                <div class="">
+                    <form class="form-modal flex" action="" method="POST" enctype="multipart/form-data" onsubmit="uploadImg(this, event)">
+                       
+                        <a href="#" class="share-download" onclick="downloadImg(this)" download="my-img.png">DOWNLOAD</a>
+                        <div class=" flex2 flex-firection-row ">
+                            <input name="img " id="imgData" type="hidden" />
+                            <div class="share-container" type="hidden"></div>
+                            <button class=" save">SAVE</button>
+                        </div>
+                    </form>
+                </div>
+            </section>
         </div>
-    <div class="flex align-item-center justify-content-center">
-        <div class="modal-img">
-        <!-- the canvas -->
-        <div class="canvas-container">
-            <canvas id="my-canvas" width="360" height="360" ></canvas>
-        </div> 
-    </div>
-    <section class="modal-container align-item-center justify-content-center"  >
-        <input type="text" class="insid-modal flex txt-mem" name="q"  placeholder="Insert Text"  maxlength="14">
-        <button class="btn-modal" > <img class="up" src="ICONS/up.png" alt="">  </button>
-        <button class="btn-modal" > <img class="down" src="ICONS/down.png" alt="">  </button>
-        <button class="btn-modal" > <img class="up-down" src="ICONS/upDown.png" alt="">  </button>
-        <button class="btn-modal" > <img  class="big-icon add" id="addId"   src="ICONS/add.png" alt=""  >  </button>
-        <button class="btn-modal" > <img  class="delete" src="ICONS/delete.png" alt="">  </button>
-        <div class="modal-btn-container flex">
-        <div>
-                <button class="btn-modal" > <img class="apluse" src="ICONS/aPluse.png" alt="">  </button>
-                <button class="btn-modal  " > <img class="aminus  big-icon "  src="ICONS/aminus.png" alt="">    </button>
-                <button class="btn-modal" > <img class="align-to-left"  src="ICONS/align-to-left.png" alt="">  </button>
-                <button class="btn-modal" > <img class="align-center"  src="ICONS/align-center.png" alt="">  </button>
-                <button class="btn-modal" > <img class="align-to-right"  src="ICONS/align-to-rigth.png" alt="">  </button>
-        </div>                                    
-        <div>                                          
-                <select class="impact" onchange="choosFonts()" name="choosFonts">
-                    <option class="impact" value="1">IMPACT</option>
-                    <option class="lato" value="2">LATO</option>
-                    <option class="euro" value="3">EURO</option>
-                </select>      
-                <input class="txtcol"  type="color" id="stroke-color" name="colorTxt" form="test" value="#ff0000" /> 
-                <button class="strok-modal" >  <img  class="stroke-color" src="ICONS/tools.png" alt="">  </button>         
-                <input class="font-col"  type="color" id="" name="fontcolor" form="" value="#ff0000" />
-                <button class="font-modal" >   <img class="font-color big-icon"  src="ICONS/paint.png" alt=""></button> 
-        </div>
-        </div>     
-        <div class="">
-            <form class="form-modal flex" action="" method="POST" enctype="multipart/form-data" onsubmit="uploadImg(this, event)">
-                <input name="img" id="imgData" type="hidden" />
-                <a href="#" class="share-download" onclick="downloadImg(this)" download="my-img.png">DOWNLOAD</a>
-                <div class="share-container"></div>
-                <button class="share-download save">SAVE</button>
-            </form>
-        </div>
-    </section>
-    </div>
-    <div class="modal-footer"></div>
+        <div class="modal-footer"></div>
     </div>
     </div>
 
