@@ -66,22 +66,22 @@ function init() {
   elAbout.addEventListener('click', openAbout);
 
   // touch events
-  elMems.addEventListener('touchstart', mems);
-  elCanvas.addEventListener('touchstart', canvasClicked);
-  elAddBtn.addEventListener('touchstart', addText);
-  elDelete.addEventListener('touchstart', deleteText);
+  // elMems.addEventListener('touchstart', mems);
+  // elCanvas.addEventListener('touchstart', canvasClicked);
+  // elAddBtn.addEventListener('touchstart', addText);
+  // elDelete.addEventListener('touchstart', deleteText);
 
-  elUp.addEventListener('touchstart', up);
-  elDown.addEventListener('touchstart', Down);
-  elUpDown.addEventListener('touchstart', upDown);
-  elApluse.addEventListener('touchstart', aPluse);
-  elAminus.addEventListener('touchstart', aMinus);
-  elAlignToLeft.addEventListener('touchstart', alignToLeft);
-  elAlignCenter.addEventListener('touchstart', alignCenter);
-  elAlignToRigth.addEventListener('touchstart', alignToRigth);
-  elStrokeColor.addEventListener('touchstart', strokeColor);
-  elFontColor.addEventListener('touchstart', fontColor);
-  elSave.addEventListener('touchstart', save);
+  // elUp.addEventListener('touchstart', up);
+  // elDown.addEventListener('touchstart', Down);
+  // elUpDown.addEventListener('touchstart', upDown);
+  // elApluse.addEventListener('touchstart', aPluse);
+  // elAminus.addEventListener('touchstart', aMinus);
+  // elAlignToLeft.addEventListener('touchstart', alignToLeft);
+  // elAlignCenter.addEventListener('touchstart', alignCenter);
+  // elAlignToRigth.addEventListener('touchstart', alignToRigth);
+  // elStrokeColor.addEventListener('touchstart', strokeColor);
+  // elFontColor.addEventListener('touchstart', fontColor);
+  // elSave.addEventListener('touchstart', save);
   loadImages()
 }
  /***************************************************************************************** */
