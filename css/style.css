@@ -21,7 +21,7 @@
 
 body {
     margin : 0 ;
-    width: 110vw;
+    width: 100vw;
 }
 
 /* COMPONENTS */
@@ -484,6 +484,9 @@ cursor: pointer;
 }
 @media screen and (max-width: 399px) {
   
+    .main-header{
+        width : 110vw;
+    }
     .main-container2{
         padding-left: 0px;
         width: 80%;
