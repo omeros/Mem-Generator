@@ -127,12 +127,13 @@ body {
     letter-spacing: -0.8px;
     cursor: pointer;
     padding-top: 20px;
+    padding-right: 30px;
 }
 
-.main-header .logo::after {
+/* .main-header .logo::after {
     content: ".";
     color: #58c93a;
-}
+} */
 
 .capitalize {
     text-transform: capitalize;
