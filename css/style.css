@@ -486,7 +486,7 @@ cursor: pointer;
 @media screen and (max-width: 399px) {
   
     .main-header{
-        width : 115vw;
+        width : 110vw;
     }
     .main-container2{
         padding-left: 0px;
