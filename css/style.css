@@ -125,6 +125,7 @@ body {
     font-size: 2.5rem;
     letter-spacing: -0.8px;
     cursor: pointer;
+    padding-top: 20px;
 }
 
 .main-header .logo::after {
@@ -486,9 +487,7 @@ cursor: pointer;
         padding-left: 0px;
         width: 80%;
         box-sizing: content-box;
-        padding-left: 80px;
-       
-    
+        padding-left: 80px;     
     }
     .grid-container {
         display: flex;
@@ -504,6 +503,9 @@ cursor: pointer;
     .logo{
         /* box-shadow: inset 1px  0 0  #1d1d1d; */
         padding: 0px;
+    }
+    .main-header .logo{
+        padding-top: 40px;
     }
     .card-image {
         width: 60vw ;
