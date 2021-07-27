@@ -492,7 +492,7 @@ cursor: pointer;
 @media screen and (max-width: 399px) {
   
     .main-header{
-        width : 100vw;
+        width : 110vw;
     }
     .main-container2{
         padding-left: 0px;
@@ -566,7 +566,8 @@ cursor: pointer;
         border-radius: 10px; 
     }
     .browse{
-        width: 230px;
+        padding-top:50px;
+        width: 215px;
     }
     
     .canvas-container{
@@ -641,6 +642,9 @@ cursor: pointer;
         cursor: pointer;
         /* padding-top: 10px; */
         border-radius: 10px;
+    }
+    .gif-container{
+   
     }
     .gif{
         width: 90vw;
