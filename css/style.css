@@ -16,7 +16,7 @@
     width: 300px;
     border-radius: 10px;
     cursor: pointer;
-        
+    box-shadow: 5px 5px 5px 10px  #888888be;    
 }
 
 body {
@@ -79,6 +79,7 @@ body {
 }
 
 .site-search{
+    
     height: 40px;
     width: 300px;
     margin : 20px;
@@ -205,9 +206,7 @@ flex-flow: column wrap;
 
   }
 
-.img10{
-    font-size: 40px;
-}
+
 
   /** modal mems **/
 .saved-mems-modal-main{
@@ -265,7 +264,7 @@ flex-flow: column wrap;
     font-size: 22px;
     color: #fff;
     border-radius: 5px;
-
+    cursor: pointer;
 }
 .share-container{
     margin-top: 8px;
@@ -435,6 +434,7 @@ cursor: pointer;
 
 .upload-img{
     height: 300px;
+    
 }
 
 .test{
@@ -476,12 +476,18 @@ cursor: pointer;
     flex-direction: column;
 }
 .browse{
-    background-color: rgb(211, 208, 207);
+    background-color: rgb(255, 255, 255);
     border-radius: 8px;
     height: 100px;
     width: 300px;
     font-size: x-large;
+    box-shadow: 5px 5px 5px 10px  #888888be;
 
+}
+
+.gif-container{
+    display: flex;
+    justify-content: center;
 }
 @media screen and (max-width: 399px) {
   
@@ -608,6 +614,7 @@ cursor: pointer;
         font-size: 22px;
         color: #fff;
         border-radius: 8px;
+        cursor: pointer;
 
     }
 
@@ -634,6 +641,11 @@ cursor: pointer;
         cursor: pointer;
         /* padding-top: 10px; */
         border-radius: 10px;
+    }
+    .gif{
+        width: 90vw;
+        padding-top: 12vh;
+
     }
 
 
