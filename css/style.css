@@ -23,6 +23,7 @@
 body {
     margin : 0 ;
     width: 100vw;
+    background-color: #f0f2f5;
 }
 
 /* COMPONENTS */
@@ -58,7 +59,7 @@ body {
 }
 .main-container2{
     padding-left: 30px;
-    max-width: 80%;
+    width: 100%;
     margin:   auto ;
     box-sizing: content-box;
     padding-left: 90px;
@@ -80,7 +81,6 @@ body {
 }
 
 .site-search{
-    
     height: 40px;
     width: 300px;
     margin : 20px;
@@ -526,9 +526,12 @@ cursor: pointer;
 
 
 
-
+/* Tablet */
 @media screen and (max-width: 768px) {
     
+    .main-container2{
+        width: 75%;
+    }
     .grid-container {
         grid-template-columns: repeat(2,1fr);
     }
@@ -544,9 +547,11 @@ cursor: pointer;
         height: 35vw;
     }
 }
+
+
+    /* Mobile */
     @media screen and (max-width: 480px) {
 
-  
     .main-header{
         width : 110vw;
     }
