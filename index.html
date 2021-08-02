@@ -54,7 +54,9 @@
                 </div> 
             </div>
             <section class="modal-container align-item-center justify-content-center"  >
-                <input type="text" class="insid-modal flex2 txt-mem" name="q"  placeholder="Insert Text"  maxlength="14">
+                <div class="insid-modal-container">
+                    <input type="text" class="insid-modal  txt-mem" name="q"  placeholder="Insert Text"  maxlength="14">
+                </div>
                 <div class="flex2 justify-content-center">
                     <div class="btn-modal-container">
                         <button class="btn-modal" > <img class="up" src="ICONS/up.png" alt="">  </button>
@@ -89,18 +91,22 @@
                             <button class="btn-modal" > <img class="align-to-right"  src="ICONS/align-to-rigth.png" alt="">  </button>
                         </div>                                                                           
                 </div>     
-                <div>                                                       
+                <div class="flex2 justify-content-center pading-bottom">                                                       
                         <select class="impact" onchange="choosFonts()" name="choosFonts">
                             <option class="impact" value="1">IMPACT</option>
                             <option class="lato" value="2">LATO</option>
                             <option class="euro" value="3">EURO</option>
-                        </select>      
-                        <input class="txtcol"  type="color" id="stroke-color" name="colorTxt" form="test" value="#ff0000" /> 
+                        </select> 
+                        <div class="txtcol-container">
+                            <input class="txtcol"  type="color" id="stroke-color" name="colorTxt" form="test" value="#ff0000" /> 
+                        </div>     
                         <button class="strok-modal" >  <img  class="stroke-color" src="ICONS/tools.png" alt="">  </button>         
-                        <input class="font-col"  type="color" id="" name="fontcolor" form="" value="#ff0000" />
-                        <button class="font-modal" >   <img class="font-color big-icon"  src="ICONS/paint.png" alt=""></button> 
+                        <div class="txtcol-container">
+                            <input class="font-col"  type="color" id="" name="fontcolor" form="" value="#ff0000" />
+                        </div>
+                            <button class="font-modal" >   <img class="font-color big-icon"  src="ICONS/paint.png" alt=""></button> 
                 </div>
-                <div class="">
+                <div class="flex2 justify-content-center">
                     <form class="form-modal flex" action="" method="POST" enctype="multipart/form-data" onsubmit="uploadImg(this, event)">                       
                         <a href="#" class="share-download" onclick="downloadImg(this)" download="my-img.png">DOWNLOAD</a>
                         <div class=" flex2 flex-firection-row ">
