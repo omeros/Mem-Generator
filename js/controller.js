@@ -6,6 +6,7 @@ var gElCanvas;
 var gCtx;
 var gToPress=false;
 var gMeme;
+var gMemes;
 var gSavedMeme;
 var gKeywords = { 'happy': 12, 'funny puk': 1 }
 
@@ -28,7 +29,8 @@ function init() {
   const elMems = document.querySelector('.mems');
   const elCloseMems = document.querySelector('.closeModalMem');
   const elAddBtn = document.querySelector('.add');
-  const elDelete = document.querySelector('.delete');
+  const elDeleteTxt = document.querySelector('.delete-txt');
+ // const elDeleteMeme = document.querySelector('.delete-meme');
   const elCanvas = document.getElementById('my-canvas');
 
   const elUp = document.querySelector('.up');
@@ -41,7 +43,7 @@ function init() {
   const elAlignToRigth = document.querySelector('.align-to-right');
   const elStrokeColor = document.querySelector('.strok-modal');
   const elFontColor = document.querySelector('.font-modal');
-  const elSave = document.querySelector('.save');
+  const elSave = document.querySelector('.save-btn');
   const elAbout = document.querySelector('.about');
 
 
@@ -51,7 +53,10 @@ function init() {
   elCloseMems.addEventListener('click', closeModalMem);
   elCanvas.addEventListener('click', canvasClicked);
   elAddBtn.addEventListener('click', addText);
-  elDelete.addEventListener('click', deleteText);
+  elDeleteTxt.addEventListener('click', deleteText);
+  elAddBtn.addEventListener('click', addText);
+  //elDeleteMeme.addEventListener('click', deleteMeme);
+  
   elUp.addEventListener('click', up);
   elDown.addEventListener('click', Down);
   elUpDown.addEventListener('click', upDown);
@@ -84,8 +89,59 @@ function init() {
   // elSave.addEventListener('touchstart', save);
   loadImages()
 }
- /***************************************************************************************** */
+
+// mem.img = mem.img.toDataURL("image/png").replace("image/png", "image/octet-stream");   
+
 function loadImages(){
+  const images =  getImages()
+
+  const val = localStorage.getItem('memObject')
+  var memObj
+  if (!val){ 
+      // memObj = images.map((mem)=>{
+      //   return mem
+      // })
+    memObj = images
+    saveToStorage('memObject',memObj)
+    console.log('save mems to storage;',memObj)
+  }else{  
+    memObj= JSON.parse(val)
+    images.forEach(mem => {
+      var isContain = memObj.some((element)=>{
+        return ( element.id === mem.id )
+      })
+      if(!isContain){
+        memObj.push(mem)
+      }
+    });
+    saveToStorage('memObject',memObj)
+  }    
+  gMemes = memObj
+  var i = 1 
+  const strHtmls = memObj.map( (meme)=> {
+    return `
+    <div class="img images img-mems${i}">
+        <img  id="${i}" class="card-image image${i++}" src="${meme.img}"  data ="${meme.id}" alt=""> 
+    </div>`
+  })
+  document.querySelector('.grid-container').innerHTML = strHtmls.join('')
+  for ( i = 1; i < memObj.length + 1; i++) {
+    const elImg = document.querySelector(`.image${i}`);
+    elImg.addEventListener('click', function (num) {
+      return function () {
+        openEditModal(num,false);
+      };
+    }(i));
+
+  }
+
+
+}
+
+
+
+ /***************************************************************************************** */
+function loadImagesOld(){
 //  const elGrid = document.querySelector('.grid-container');
   const images =  getImages()
   var i = 1 
@@ -118,10 +174,14 @@ function openEditModalwithSavedMems(i) {
   const img = document.querySelector(`.saved-image${i}`);
   const elCanvas = document.getElementById("my-canvas");
   gCtx.drawImage(img, 0, 0, 360, 360);
-
 }
+
+
+
 function openEditModal(i, isFromLocalStorage) {
   const elModal = document.querySelector('.modal');
+  const elDeleteMeme = document.querySelector('.delete-meme');
+  elDeleteMeme.setAttribute("data-id", `${gMemes[i-1].id}`);
   elModal.style.display = 'block';
 if(isFromLocalStorage){
   const img = document.querySelector(`.saved-image${i}`);
@@ -393,16 +453,27 @@ function save(){
   if (!val){ 
     const memArr=[];
     const image = gElCanvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
-    memArr.push(image)
+    const newMeme = {
+      id : makeId(),
+      img : image
+    }
+    memArr.push(newMeme)
     saveToStorage('memObject',memArr)
-    console.log('save mems to storage;')
+    closeModal()
+    loadImages()
+    //console.log('save mems to storage;')
+
   }else{  
     const memObj= JSON.parse(val)
     const image = gElCanvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
-    memObj.push(image)
+    const newMeme = {
+      id : makeId(),
+      img : image
+    }
+    memObj.push(newMeme)
     saveToStorage('memObject',memObj)
-    //console.log('save mems to storage;')
-    //console.log('image',image);
+    closeModal()
+    loadImages()
   }    
 }
 /**************************************************************************************** */
@@ -417,9 +488,9 @@ function mems(){
   gSavedMeme = memObj;
   var i = 1;
   if(memObj){
-    const strHtmls = memObj.map( (img)=> {
+    const strHtmls = memObj.map( (meme)=> {
     return `
-    <img class="saved-mems-img saved-image${i++}" src="${img}"  alt="">`
+    <img class="saved-mems-img saved-image${i++}" src="${meme.img}"  alt="">`
   })
   document.querySelector('.saved-mems-grid-container').innerHTML = strHtmls.join('')
   for ( i = 1; i < memObj.length + 1; i++) {
@@ -504,8 +575,13 @@ function  uploadImage(file){
     reader.readAsDataURL(input.files[0]);
 }
 
-function addToDB(img){
-  gImages.push(img)
+function addToDB(memeImg){
+  // gImages.push(memeImg)
+  var newMeme = {
+    img : memeImg,
+    id : makeId()
+  }
+  gImages.push(newMeme)
 }
 
 function openAbout(){
@@ -515,6 +591,25 @@ function openAbout(){
 function closeAboutModal(){
   const elModal = document.querySelector('.about-modal');
   elModal.style.display = 'none';
+}
 
+function deleteMeme(element){
+ // console.log('elementtttttttttttttt',element.dataset.id)
+  let idxToRemove = gMemes.findIndex((meme)=>{
+      return (meme.id == element.dataset.id)
+  })
+
+  gMemes.splice(idxToRemove,1)
+ // console.log('gMemes after splice' ,gMemes)
+  saveToStorage('memObject',gMemes)
+  idxToRemove = gImages.findIndex((meme)=>{
+    return (meme.id == element.dataset.id)
+  })
+  //console.log('idxToRemove in gImages ',idxToRemove)
+  gImages.splice(idxToRemove,1)
+
+ // console.log('gImages',gImages)
+  closeModal()
+  loadImages()
 }
 

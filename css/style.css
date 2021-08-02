@@ -13,7 +13,8 @@
     background-color: #e3e3e3;
     text-align: center;
     padding: 0 0;
-    width: 300px;
+    width: 25vw;
+    height: 25vw;
     border-radius: 10px;
     cursor: pointer;
     box-shadow: 5px 5px 5px 10px  #888888be;    
@@ -127,8 +128,10 @@ body {
     font-size: 2.5rem;
     letter-spacing: -0.8px;
     cursor: pointer;
-    padding-top: 20px;
-    padding-right: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-right: 2vw;
 }
 
 /* .main-header .logo::after {
@@ -160,7 +163,7 @@ body {
     align-items: center; 
 }
 
-.flex.spcae-between {
+.space-between {
     justify-content: space-between;
    
 }
@@ -176,8 +179,10 @@ flex-flow: column wrap;
 }
 
 .justify-content-center{
-
     justify-content: center;
+}
+.justify-content-flex-end{
+    justify-content: flex-end;
 }
 
 /****** FONTS *****/
@@ -213,22 +218,20 @@ flex-flow: column wrap;
     background-color: rgb(232, 238, 238) ;
     box-shadow: 5px 10px 10px 500vh #a8a8a8be;  
     display : none;
-    width : 90%;
+  
     position: absolute;
     top:20px;
     right: 100px;
     padding: 0px;
-    width : 80%;
+    width : 85vw;
     min-height: 70vh;
     border-radius: 10px;
 }
 
 .modal-mems{
     background-color: rgb(232, 238, 238) ;
-    display : none;   
-    position: absolute;
-    top:30px;
-    right: 0px;
+    display : flex;
+    justify-content: center;   
     padding-top:10px ;
     padding-bottom: 30px;
     width : 100%;
@@ -251,17 +254,28 @@ flex-flow: column wrap;
     border-radius: 10px;
 }
 .saved-mems-img{
-    width: 300px;
+    width: 25vw;
+    height: 25vw;
     cursor: pointer;
     /* padding-top: 10px; */
     border-radius: 10px;
 }
-.save{
+.save-btn{
     margin-left: 5px;
     margin-top: 0px;
     background: #4267b2;
     padding: 5px 10px;
-    font-size: 22px;
+    font-size: 2vw;
+    color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.delete-meme{
+    margin-left: 5px;
+    margin-top: 0px;
+    background: #4267b2;
+    padding: 5px 10px;
+    font-size: 2vw;
     color: #fff;
     border-radius: 5px;
     cursor: pointer;
@@ -301,13 +315,13 @@ flex-flow: column wrap;
     right: 30px;
     padding: 5px;
     width : 90%;
-    height:500px ;
+    height: 85fhvw ;
 }
 
 
 .modal-container{
     width : 90%;
-    padding-left: 60px;
+    padding-left: 1vw;
 }
 
 .modal-btn-container{
@@ -321,13 +335,17 @@ flex-flow: column wrap;
 }
 
 .logo-icon{
-    width: 300px ;
-    height: 80px ;
+    width: 25vw ;
+    height: 5vw ;
+}
+.btn-modal-container{
+    padding: 0.3vw;
 }
 .btn-modal{  
-width: 61px;
-height: 61px;
+width: 5vw;
+height: 5vw;
 cursor: pointer;
+
 }
 .modal-header{
     width: 100%;
@@ -341,9 +359,9 @@ cursor: pointer;
 }
 
 .impact{
-    width: 152px;
+    width: 15vw;
     height: 30px; 
-    margin: 20px;
+    margin: 15px 0px 15px; 
     border-radius: 10px; 
 }
 .stickers{
@@ -362,15 +380,14 @@ cursor: pointer;
 
 
 .form-modal{
-    align-items: center; 
-    margin:10px; 
-    padding:5px;
+
+
 } 
 
 .share-download{
     background: #4267b2;
         border: 1px solid #4267b2;
-        font-size: 22px;
+        font-size: 2vw;
         color: #fff;
         cursor: pointer;
         font-family: Helvetica, Arial, sans-serif;
@@ -386,7 +403,7 @@ cursor: pointer;
 
 .insid-modal{
     height: 50px;
-    width: 300px;
+    width: 27vw;
     font-size:45px;
     margin : 20px;
     border-radius: 10px; 
@@ -400,7 +417,12 @@ cursor: pointer;
      /* font-family: impact;  */
     top:10px;
     margin:   auto ; 
-    padding: 5px 101px;
+    padding-left: 1vw;
+    padding-right: 3vw;
+}
+#my-canvas{
+    width: 30vw;
+    height: 30vw;
 }
 
 .btn {
@@ -489,7 +511,29 @@ cursor: pointer;
     display: flex;
     justify-content: center;
 }
-@media screen and (max-width: 399px) {
+
+
+
+
+@media screen and (max-width: 768px) {
+    
+    .grid-container {
+        grid-template-columns: repeat(2,1fr);
+    }
+    .saved-mems-grid-container{
+        grid-template-columns: repeat(2,1fr);
+        /* width:60vw; */
+   }
+    .saved-mems-modal-main{
+        right: 40px;
+    }
+    .saved-mems-img{
+        width: 35vw;
+        height: 35vw;
+    }
+}
+    @media screen and (max-width: 480px) {
+
   
     .main-header{
         width : 110vw;
@@ -505,21 +549,20 @@ cursor: pointer;
         flex-direction: column;
     }
     .logo-icon {
-        width: 90px;
-        height: 30px;
+        width: 30vw ;
+        height: 6vw ;
+        padding-right: 10px;
         border-left: #1e1e1e;
  
         /* padding: 30px 30px 10px 30px ; */
     }
-    .logo{
-        /* box-shadow: inset 1px  0 0  #1d1d1d; */
-        padding: 0px;
-    }
+
     .main-header .logo{
-        padding-top: 40px;
+        padding-top: 0px;
     }
     .card-image {
         width: 60vw ;
+        height: 60vw;
     }
     .main-container{
         width: 100vw;
@@ -571,7 +614,9 @@ cursor: pointer;
     }
     
     .canvas-container{
-        padding: 10px 0px 0px 0px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
     .modal-container{
         width : 90%;
@@ -579,13 +624,15 @@ cursor: pointer;
         padding-top: 0px;
     }
     .form-modal{
-        padding-top: 0px;
+      
     }
     .share-download{
         padding: 10px;
         margin-top: 0px;
         border-radius: 8px;
         margin-bottom: 10px;
+        font-size: 22px;
+        width: fit-content;
     }
     .share-container{
         margin-top: 8px;
@@ -607,7 +654,7 @@ cursor: pointer;
         
     }
 
-    .save{
+    .save-btn{
         margin-left: 10px;
         margin-top: 0px;
         background: #4267b2;
@@ -616,7 +663,16 @@ cursor: pointer;
         color: #fff;
         border-radius: 8px;
         cursor: pointer;
-
+    }
+    .delete-meme{
+        margin-left: 10px;
+        margin-top: 0px;
+        background: #4267b2;
+        padding: 8px 10px;
+        font-size: 22px;
+        color: #fff;
+        border-radius: 8px;
+        cursor: pointer;
     }
 
     .saved-mems-modal-main{
@@ -638,7 +694,8 @@ cursor: pointer;
             width:60vw;
     }
     .saved-mems-img{
-        width: 60vw;;
+        width: 60vw;
+        height: 60vw;
         cursor: pointer;
         /* padding-top: 10px; */
         border-radius: 10px;
@@ -651,6 +708,9 @@ cursor: pointer;
         padding-top: 12vh;
 
     }
-
+    .btn-modal{  
+        width: 15vw;
+        height: 15vw;
+    }
 
 }
