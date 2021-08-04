@@ -17,6 +17,7 @@ function init() {
     numOfTexts: 0,
     lines: [],
     image: null,
+    mousePressed : null
   }
 
   gElCanvas = document.getElementById('my-canvas')
@@ -51,6 +52,7 @@ function init() {
   // mouse events
   elMems.addEventListener('click', mems);
   elCloseMems.addEventListener('click', closeModalMem);
+  elCanvas.addEventListener('mousedown', doMousePressed,false);
   elCanvas.addEventListener('click', canvasClicked);
   elAddBtn.addEventListener('click', addText);
   elDeleteTxt.addEventListener('click', deleteText);
@@ -246,23 +248,23 @@ function addText(ev) {
   const strTxt = elAdd.value;
   const objDetails = { txt: '', lineIdx: 0, minX: 0, maxX: 0, minY: 0, maxY: 0, fontLength: 0, fontSize: 55, font: 'impact', textAlign: 'center', strokeColor: 'white', fontColor: 'black', }
   objDetails.txt = strTxt
-  var idx = 0;
+  var idy = 0;
   gMeme.numOfTexts++;
   const num = gMeme.numOfTexts;
   switch (num) {
     case 1:
-      idx = 60;
-      break;
+        idy = 60;
+        break;
     case 2:
-      idx = 60 + 280;
-      break;
+        idy = 60 + 280;
+        break;
     case 3:
-      idx = 60 + 120;
-      break;
+        idy = 60 + 120;
+        break;
     default:
-      idx = 60 + 110;
-      break;
-  }
+        idy = 60 + 110;
+        break;
+    }
 
   const metrics = gCtx.measureText(strTxt)
   const testLength = metrics.width
@@ -271,9 +273,9 @@ function addText(ev) {
 
   console.log('current txtLength', txtLength)
   objDetails.fontLength = txtLength;
-  objDetails.lineIdx = idx;
-  objDetails.maxY = objDetails.lineIdx;
-  objDetails.minY = objDetails.maxY - objDetails.fontSize + 10;
+  objDetails.lineIdy = idy;
+  objDetails.maxY = objDetails.lineIdy;
+  objDetails.minY = objDetails.maxY - objDetails.fontSize + 30;
   objDetails.maxX = 200 + (txtLength); 
   objDetails.minX = 200 - (txtLength);      
 
@@ -298,14 +300,63 @@ function renderMemn() {
   for (var i = 0; i < gMeme.lines.length; i++) {
 
     const memTxt = gMeme.lines[i].txt;
+    const idy = gMeme.lines[i].lineIdy;
     const idx = gMeme.lines[i].lineIdx;
-    drawText(memTxt, i, 200, idx);
+    drawText(memTxt, i, 200 + idx, idy);
 
 
   }
 }
 
 function canvasClicked(ev) {
+    
+    const dx = ev.offsetX - gMeme.mousePressed.x 
+    const dy = ev.offsetY - gMeme.mousePressed.y
+    
+    for (let i = 0; i < gMeme.lines.length; i++) {
+      
+        const minx = gMeme.lines[i].minX;
+        const maxx = gMeme.lines[i].maxX;
+        const miny = gMeme.lines[i].minY;
+        const maxy = gMeme.lines[i].maxY;
+        const { offsetX, offsetY } = ev;
+        if (((gMeme.mousePressed.x< maxx) && (minx < gMeme.mousePressed.x)) && ((gMeme.mousePressed.y < maxy) && (miny < gMeme.mousePressed.y))) {
+            if(gMeme.lines[i].strokeColor!='blue'){
+                gMeme.lines[i].strokeColor = 'blue'
+            }else{
+                gMeme.lines[i].strokeColor = 'white'
+            }
+       //     gMeme.selectedLineIdx = i;
+
+            gMeme.lines[i].lineIdx += dx
+            gMeme.lines[i].lineIdy += dy
+            gMeme.lines[i].maxX += dx
+            gMeme.lines[i].maxY += dy
+
+
+            console.log('dx in canvasclicked ',dx)
+            console.log('dy in canvasclicked ',dy)
+
+            gCtx.clearRect(0, 0, gElCanvas.width, gElCanvas.height)
+            const img = gMeme.image;
+            gCtx.drawImage(img, 0, 0, 360, 360);
+            renderMemn()
+        }
+
+    }
+
+
+}
+
+function doMousePressed(ev){
+   const  mousePressed = {
+        x : ev.layerX,
+        y : ev.layerY
+    }
+    gMeme.mousePressed = mousePressed
+}
+
+function canvasClickedOld(ev) {
   if (gToPress) {
     const { offsetX, offsetY } = ev;
     const numTexts = gMeme.numOfTexts - 1;
@@ -612,4 +663,3 @@ function deleteMeme(element){
   closeModal()
   loadImages()
 }
-
