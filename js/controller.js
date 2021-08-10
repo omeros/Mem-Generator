@@ -335,7 +335,7 @@ if(isFromLocalStorage){
 }else{
   const elModalImg = document.querySelector(`.image${i}`)
   gMeme.image = elModalImg;
-console.log('elModalImg','./' + elModalImg.src.substring(22))
+console.log('elModalImg','./' + elModalImg.src)
   // var back = new Konva.Image({
   //     imageFromURL: `url(${elModalImg.src.substring(22)})`,
   //     x: 0,
