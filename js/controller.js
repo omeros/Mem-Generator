@@ -286,11 +286,11 @@ function openEditModalwithSavedMems(i) {
 
 
 
-function openEditModal(i, isFromLocalStorage) {
+async function openEditModal(i, isFromLocalStorage) {
   const elModal = document.querySelector('.modal');
   const elDeleteMeme = document.querySelector('.delete-meme');
   elDeleteMeme.setAttribute("data-id", `${gMemes[i-1].id}`);
-  elModal.style.display = 'block';
+
 if(isFromLocalStorage){
   const img = document.querySelector(`.saved-image${i}`);
 
@@ -325,7 +325,7 @@ if(isFromLocalStorage){
      // add the shape to the layer
      layer.add(yoda);
     };
-    imageObj.src =`${elModalImg.src.substring(22)}`;
+   imageObj.src =`${elModalImg.src.substring(22)}`;
 
 
 
@@ -383,6 +383,7 @@ console.log('elModalImg',elModalImg.src)
 
 }
 
+elModal.style.display = 'block';
 }
 
 function closeModal() {
