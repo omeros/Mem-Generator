@@ -325,7 +325,7 @@ if(isFromLocalStorage){
      // add the shape to the layer
      layer.add(yoda);
     };
-   imageObj.src =`${elModalImg.src}`;
+   imageObj.src =`./${elModalImg.src.substring(22)}`;
 
 
 
@@ -360,7 +360,7 @@ console.log('elModalImg','./' + elModalImg.src.substring(22))
      // add the shape to the layer
      layer.add(myImage);
     };
-    imageObj.src =`${elModalImg.src}`;
+    imageObj.src =`./${elModalImg.src.substring(22)}`;
 
 
   /******************** konve upload image to front ************************************* */
