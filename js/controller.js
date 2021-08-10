@@ -297,43 +297,86 @@ if(isFromLocalStorage){
  //gStage.container().style.backgroundImage = `url(${img.src.substring(22)})`;
  // gStage.container().style.backgroundImage = img
 
- Konva.Image.fromURL(`${elModalImg.src.substring(22)}`, function (darthNode) {
-  darthNode.setAttrs({
-    x: 0,
-    y: 0,
-    scaleX: 0.99,
-    scaleY: 0.99,
-    width: vw*0.3,
-    height: vw*0.3,
+   /******************** konve upload image to front ************************************* */
+//  Konva.Image.fromURL(`${elModalImg.src.substring(22)}`, function (darthNode) {
+//   darthNode.setAttrs({
+//     x: 0,
+//     y: 0,
+//     scaleX: 0.99,
+//     scaleY: 0.99,
+//     width: vw*0.3,
+//     height: vw*0.3,
 
-  });
-  layer.add(darthNode);
-});
+//   });
+//   layer.add(darthNode);
+// });
 
+
+     // main API:
+     var imageObj = new Image();
+     imageObj.onload = function () {
+       var yoda = new Konva.Image({
+         x: 50,
+         y: 50,
+         image: imageObj,
+         width: vw,
+         //     height: vw,
+       });
+     // add the shape to the layer
+     layer.add(yoda);
+    };
+    imageObj.src =`${elModalImg.src.substring(22)}`;
+
+
+
+/****************************************************************************** */
   // gCtx.drawImage(img, 0, 0, 360, 360);
   
 }else{
   const elModalImg = document.querySelector(`.image${i}`)
   gMeme.image = elModalImg;
-
+console.log('elModalImg',elModalImg.src)
   // var back = new Konva.Image({
-  //     imageFromURL: `url(${elModalImg.src.substring(22)})`
+  //     imageFromURL: `url(${elModalImg.src.substring(22)})`,
+  //     x: 0,
+  //     y: 0,
+  //     scaleX: 0.99,
+  //     scaleY: 0.99,
+  //     width: vw,
+  //     height: vw,
   // });
   //   layer.add(back)
 
-  Konva.Image.fromURL(`${elModalImg.src.substring(22)}`, function (darthNode) {
-    darthNode.setAttrs({
-      x: 0,
-      y: 0,
-      scaleX: 0.99,
-      scaleY: 0.99,
-      width: vw,
-      height: vw,
+     // main API:
+     var imageObj = new Image();
+     imageObj.onload = function () {
+       var yoda = new Konva.Image({
+         x: 50,
+         y: 50,
+         image: imageObj,
+         width: vw,
+         //     height: vw,
+       });
+     // add the shape to the layer
+     layer.add(yoda);
+    };
+    imageObj.src =`${elModalImg.src.substring(22)}`;
 
-    });
-   layer.add(darthNode);
-  });
 
+  /******************** konve upload image to front ************************************* */
+  // Konva.Image.fromURL(`${elModalImg.src.substring(22)}`, function (darthNode) {
+  //   darthNode.setAttrs({
+  //     x: 0,
+  //     y: 0,
+  //     scaleX: 0.99,
+  //     scaleY: 0.99,
+  //     width: vw,
+  //     height: vw,
+
+  //   });
+  //  layer.add(darthNode);
+  // });
+ /*********************************************************************************** */
  // gStage.container().style.backgroundImage = `url(${elModalImg.src.substring(22)})`;
  // console.log('fdfdsfsdf  :  ',elModalImg.src.substring(22))
   // gCtx.drawImage(elModalImg, 0, 0, 360, 360);
