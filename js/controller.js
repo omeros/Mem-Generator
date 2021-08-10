@@ -325,8 +325,7 @@ if(isFromLocalStorage){
      // add the shape to the layer
      layer.add(yoda);
     };
-   imageObj.src =`https://res.cloudinary.com/omerphoto/image/upload/v1620641839/old_is_gold_x8p6tc.jpg`;
-  //  imageObj.src =`${elModalImg.src}`;
+   imageObj.src =`${elModalImg.src}`;
 
 
 
@@ -361,8 +360,7 @@ console.log('elModalImg','./' + elModalImg.src)
      // add the shape to the layer
      layer.add(myImage);
     };
-    imageObj.src =`https://res.cloudinary.com/omerphoto/image/upload/v1620641839/old_is_gold_x8p6tc.jpg`;
-    // imageObj.src =`${elModalImg.src}`;
+    imageObj.src =`${elModalImg.src}`;
 
 
   /******************** konve upload image to front ************************************* */
