@@ -335,7 +335,7 @@ if(isFromLocalStorage){
 }else{
   const elModalImg = document.querySelector(`.image${i}`)
   gMeme.image = elModalImg;
-console.log('elModalImg',elModalImg.src)
+console.log('elModalImg','./' + elModalImg.src.substring(22))
   // var back = new Konva.Image({
   //     imageFromURL: `url(${elModalImg.src.substring(22)})`,
   //     x: 0,
@@ -350,15 +350,15 @@ console.log('elModalImg',elModalImg.src)
      // main API:
      var imageObj = new Image();
      imageObj.onload = function () {
-       var yoda = new Konva.Image({
-         x: 50,
-         y: 50,
+       var myImage = new Konva.Image({
+         x: 0,
+         y: 0,
          image: imageObj,
          width: vw,
          //     height: vw,
        });
      // add the shape to the layer
-     layer.add(yoda);
+     layer.add(myImage);
     };
     imageObj.src =`${elModalImg.src.substring(22)}`;
 
