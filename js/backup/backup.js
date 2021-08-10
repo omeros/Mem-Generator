@@ -10,6 +10,7 @@ var gMemes;
 var gSavedMeme;
 var gKeywords = { 'happy': 12, 'funny puk': 1 }
 var gStage = null
+var gBackground = null
 
 
 function init() {
@@ -174,13 +175,12 @@ var stage = new Konva.Stage({
 });
 
 gStage = stage
-var layer = new Konva.Layer();
-//  var back = new Konva.Image({
-//   imageFromURL: 'https://res.cloudinary.com/omerphoto/image/upload/v1620832660/4_y3g2ul.jpg'
-//  });
-// layer.add(back);
+//var layer = new Konva.Layer();
 
-stage.add(layer);
+var background = new Konva.Layer();
+
+gBackground = background
+
 
 var newText = new Konva.Text({
     x:  window.vw*0.5,
@@ -292,23 +292,14 @@ function openEditModal(i, isFromLocalStorage) {
   elDeleteMeme.setAttribute("data-id", `${gMemes[i-1].id}`);
   elModal.style.display = 'block';
 if(isFromLocalStorage){
+
+
+
+
   const img = document.querySelector(`.saved-image${i}`);
-
- //gStage.container().style.backgroundImage = `url(${img.src.substring(22)})`;
+  //gStage.container().style.backgroundImage = `url(${img.src.substring(22)})`;
  // gStage.container().style.backgroundImage = img
-
- Konva.Image.fromURL(`${elModalImg.src.substring(22)}`, function (darthNode) {
-  darthNode.setAttrs({
-    x: 0,
-    y: 0,
-    scaleX: 0.99,
-    scaleY: 0.99,
-    width: vw*0.3,
-    height: vw*0.3,
-
-  });
-  layer.add(darthNode);
-});
+  //console.log('fdfdsfsdf',img)
 
   // gCtx.drawImage(img, 0, 0, 360, 360);
   
@@ -316,25 +307,15 @@ if(isFromLocalStorage){
   const elModalImg = document.querySelector(`.image${i}`)
   gMeme.image = elModalImg;
 
-  // var back = new Konva.Image({
-  //     imageFromURL: `url(${elModalImg.src.substring(22)})`
-  // });
-  //   layer.add(back)
-
-  Konva.Image.fromURL(`${elModalImg.src.substring(22)}`, function (darthNode) {
-    darthNode.setAttrs({
-      x: 0,
-      y: 0,
-      scaleX: 0.99,
-      scaleY: 0.99,
-      width: vw,
-      height: vw,
-
-    });
-   layer.add(darthNode);
+  var back = new Konva.Image({
+     image: elModalImg.src.substring(22)
+    //image: "https://res.cloudinary.com/omerphoto/image/upload/v1621970935/123_mjub6w.jpg"
   });
-
- // gStage.container().style.backgroundImage = `url(${elModalImg.src.substring(22)})`;
+ //gBackground.add(back);
+  
+  //stage.add(gBackground);
+  
+ gStage.container().style.backgroundImage = `url(${elModalImg.src.substring(22)})`;
  // console.log('fdfdsfsdf  :  ',elModalImg.src.substring(22))
   // gCtx.drawImage(elModalImg, 0, 0, 360, 360);
 
@@ -380,7 +361,7 @@ function drawText(txt = 'abcde', currIndex, x, y ) {
 
 function downloadImg(elLink) {
   const elCanvas = document.getElementById('container')
-  const imgContent = elCanvas.toDataURL('image/png')
+  const imgContent = gStage.toDataURL('image/png')
   elLink.href = imgContent
 
   
@@ -431,12 +412,12 @@ function addText(ev) {
             fontSize: window.vw*0.1,  
             text: strTxt ,
             draggable: true,
-            fill: 'black',
-            name  : 'txt',
-            
-  });         
-  layer.add(myText); 
-
+            fill: 'white',
+            name  : 'txt'
+  });
+          
+  gBackground.add(myText);  
+  // layer.add(myText);  
   var MIN_WIDTH = 20;
   // var tr = new Konva.Transformer({
   //           nodes: [myText],
@@ -452,7 +433,8 @@ function addText(ev) {
   //   },
   // });
   var tr = new Konva.Transformer();
-  layer.add(tr);
+  gBackground.add(tr);
+  // layer.add(tr);
 //   myText.on('transform', () => {
 //     // with enabled anchors we can only change scaleX
 //     // so we don't need to reset height
@@ -476,7 +458,7 @@ var selectionRectangle = new Konva.Rect({
   fill: 'rgba(0,0,255,0.5)',
   visible: false,
 });
-layer.add(selectionRectangle);
+gBackground.add(selectionRectangle);
 var x1, y1, x2, y2;
 stage.on('mousedown touchstart', (e) => {
   // do nothing if we mousedown on any shape
@@ -510,15 +492,13 @@ stage.on('mousemove touchmove', () => {
 });
 
 stage.on('mouseup touchend', () => {
-  // do nothing if we didn't start selection
+  // no nothing if we didn't start selection
   if (!selectionRectangle.visible()) {
-    console.log('!selectionRectangle.visible() in mouseup touchend')
     return;
   }
   // update visibility in timeout, so we can check it in click event
   setTimeout(() => {
     selectionRectangle.visible(false);
-    console.log('setTimeout')
   });
 
   var shapes = stage.find('.txt');
@@ -532,26 +512,18 @@ stage.on('mouseup touchend', () => {
 // clicks should select/deselect shapes
 stage.on('click tap', function (e) {
   // if we are selecting with rect, do nothing
-  console.log('select text')
   if (selectionRectangle.visible()) {
-    console.log('do unselect text')
     return;
   }
 
   // if click on empty area - remove all selections
   if (e.target === stage) {
     tr.nodes([]);
-    console.log('empty area')
     return;
   }
 
   // do nothing if clicked NOT on our rectangles
   if (!e.target.hasName('txt')) {
-    console.log('do nothing if clicked NOT on our rectangles')  
-    const nodes = tr.nodes().slice(); // use slice to have new copy of array
-    // remove node from array
-    nodes.splice(nodes.indexOf(e.target), 1);
-    tr.nodes(nodes);
     return;
   }
 
@@ -562,19 +534,16 @@ stage.on('click tap', function (e) {
   if (!metaPressed && !isSelected) {
     // if no key pressed and the node is not selected
     // select just one
-    console.log('!metaPressed && !isSelected')
     tr.nodes([e.target]);
   } else if (metaPressed && isSelected) {
     // if we pressed keys and node was selected
     // we need to remove it from selection:
-    console.log('metaPressed && isSelected')
     const nodes = tr.nodes().slice(); // use slice to have new copy of array
     // remove node from array
     nodes.splice(nodes.indexOf(e.target), 1);
     tr.nodes(nodes);
   } else if (metaPressed && !isSelected) {
     // add the node into selection
-    console.log('metaPressed && !isSelected')
     const nodes = tr.nodes().concat([e.target]);
     tr.nodes(nodes);
   }
@@ -665,7 +634,7 @@ function aPluse() {
  fontSize +=2
  gMeme.lines[0].konvaObj.fontSize(fontSize)
  gMeme.lines[0].konvaObj.remove()
- layer.add( gMeme.lines[0].konvaObj)
+ gBackground.add( gMeme.lines[0].konvaObj)
 }
 
 function aMinus() {
@@ -679,7 +648,7 @@ function aMinus() {
   fontSize -=2
   gMeme.lines[0].konvaObj.fontSize(fontSize)
   gMeme.lines[0].konvaObj.remove()
-  layer.add( gMeme.lines[0].konvaObj)
+  gBackground.add( gMeme.lines[0].konvaObj)
 }
 function alignToLeft() {
   gMeme.lines[gMeme.selectedLineIdx].textAlign = 'right'
@@ -704,11 +673,11 @@ function alignToRigth() {
 }
 
 function strokeColor(ev) {
+  console.log('hjfcdbfwbjk')
   ev.preventDefault();
   const elTxtCol = document.querySelector(".txtcol");
   const txtColor = elTxtCol.value;
-  //gMeme.strokeColor = txtColor;
-  console.log('txtColor',txtColor)
+  gMeme.strokeColor = txtColor;
   renderMemn()
 }
 function fontColor() {
@@ -752,24 +721,22 @@ function Down(){
 
 function strokeColor(){
   const elCol = document.querySelector(".txtcol");
-  let stColor = elCol.value  
-  console.log('stColor',stColor)    
-  //gMeme.lines[gMeme.selectedLineIdx].strokeColor=stColor;
+  let stColor = elCol.value      
+  gMeme.lines[gMeme.selectedLineIdx].strokeColor=stColor;
 //  gCtx.clearRect(0, 0, gElCanvas.width, gElCanvas.height)
- // const img = gMeme.image;
+  const img = gMeme.image;
 //  gCtx.drawImage(img, 0, 0, 360, 360);
-//  renderMemn();
+  renderMemn();
 }
 
 function fontColor(){
   const elCol = document.querySelector(".font-col");
   let stColor = elCol.value      
-  console.log('stColor',stColor)
-  //gMeme.lines[gMeme.selectedLineIdx].fontColor=stColor;
-  //gCtx.clearRect(0, 0, gElCanvas.width, gElCanvas.height)
-  //const img = gMeme.image;
+  gMeme.lines[gMeme.selectedLineIdx].fontColor=stColor;
+  gCtx.clearRect(0, 0, gElCanvas.width, gElCanvas.height)
+  const img = gMeme.image;
  // gCtx.drawImage(img, 0, 0, 360, 360);
-  //renderMemn();
+  renderMemn();
 }
 
 function save(){

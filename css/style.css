@@ -431,11 +431,16 @@ cursor: pointer;
     margin:   auto ; 
     padding-left: 1vw;
     padding-right: 3vw;
+    width: 30vw;
 }
-#my-canvas{
+#container{
+    width: 30vw;
+}
+/* canvas{
     width: 30vw;
     height: 30vw;
-}
+} */
+
 
 .btn {
     background: #4267b2;
@@ -743,3 +748,21 @@ cursor: pointer;
   
 
 }
+
+
+
+/***************** Konva's Code ******************************/
+
+
+
+    
+    .test{
+     
+        /* width: 20vw;
+        height: 20vw; */
+        /* background-image: url("https://res.cloudinary.com/omerphoto/image/upload/v1621970935/123_mjub6w.jpg"); */
+        /* background-size: 20vw 20vw; */
+    
+    
+        
+    }
