@@ -307,6 +307,9 @@ function addText(ev) {
 
   const elAdd = document.querySelector('.txt-mem');
   const strTxt = elAdd.value;
+  if(!strTxt){
+    return
+  }
   objDetails.txt = strTxt
 
   const num = gMeme.lines.length
@@ -342,29 +345,22 @@ function addText(ev) {
   myText.on('click', function (event) {
     console.log('event',event.target.index)
     gTextChoosed = this
-    // if(!gIsAfterRemoveItem){
-    //   gIndex = (event.target.index - 1)/3
-    // }else{
-    //   gIndex = (event.target.index - 2)/3
-    //   gIsAfterRemoveItem = false
-    // }
-    // console.log('gIndex',gIndex)
-    // var fill = this.fill() == 'yellow' ? '#00D2FF' : 'yellow';
-    // this.fill(fill);
+
   });
 
-  layer.add(myText);
+    layer.add(myText);
+    var tr = new Konva.Transformer();
+    layer.add(tr);
+
+    objDetails.konvaObj = myText
+    objDetails.konvaTr = tr
+
+    gMeme.lines.push(objDetails);
+    console.log('gMeme.lines', gMeme.lines)
 
 
 
-  var tr = new Konva.Transformer();
-  layer.add(tr);
 
-  objDetails.konvaObj = myText
-  objDetails.konvaTr = tr
-
-  gMeme.lines.push(objDetails);
-  console.log('gMeme.lines', gMeme.lines)
 
 
 
@@ -493,6 +489,10 @@ function deleteText() {
     })
     gTextChoosed.remove()
     gMeme.lines.splice(indexToRemove,1)
+  }else if ((gMeme.lines.length) > 0){
+      gMeme.lines[gMeme.lines.length - 1].konvaObj.remove()
+    gMeme.lines[gMeme.lines.length - 1].konvaTr.remove()
+    gMeme.lines.pop();
   }
   gTextChoosed = null
 }
