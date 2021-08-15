@@ -17,6 +17,7 @@ var gIsAfterRemoveItem
 var gTextChoosed
 var gImageObj 
 var gToDataUrl
+var gTr
 
 function init() {
   gMeme = {
@@ -95,6 +96,10 @@ function init() {
   document.getElementById('download').addEventListener(
     'click',
     function () {
+      //removes rectangle from text
+      gMeme.lines.forEach((txt)=>{  
+        txt.konvaTr.nodes([]);
+      })  
       var dataURL = stage.toDataURL();
       gToDataUrl = dataURL
       downloadURI(dataURL, 'my-image.png');
@@ -203,12 +208,23 @@ function fitStageIntoParentContainer() {
 
   // now we need to fit stage into parent container
   var containerWidth = container.offsetWidth;
-
+  console.log('containerWidth',containerWidth)
+  console.log('window.innerWidth',window.innerWidth);
+  
+  if(window.innerWidth<580){
+    document.querySelector('.canvas-container').style.height = "255px"
+    document.querySelector('.canvas-container').style.width = "255px"
+  }else if(window.innerWidth>=580){
+    document.querySelector('.canvas-container').style.height =  '30vw'
+    document.querySelector('.canvas-container').style.width =  '30vw'
+  }
   // but we also make the full scene visible
   // so we need to scale all objects on canvas
   var scale = containerWidth / sceneWidth;
 
+  // var test = (sceneWidth * scale)/4
   stage.width(sceneWidth * scale);
+  // stage.width(test);
   stage.height(sceneHeight * scale);
   stage.scale({ x: scale, y: scale });
 }
@@ -363,7 +379,6 @@ function addText(ev) {
 
 
 
-
   /******************* select shape ************************* */
   var selectionRectangle = new Konva.Rect({
     fill: 'rgba(0,0,255,0.5)',
@@ -403,6 +418,7 @@ function addText(ev) {
   });
 
   stage.on('mouseup touchend', () => {
+    console.log(',tr.nodes',tr.nodes())
     // do nothing if we didn't start selection
     if (!selectionRectangle.visible()) {
       console.log('!selectionRectangle.visible() in mouseup touchend')
@@ -455,7 +471,7 @@ function addText(ev) {
     if (!metaPressed && !isSelected) {
       // if no key pressed and the node is not selected
       // select just one
-      console.log('!metaPressed && !isSelected : e.target')
+      console.log('!metaPressed && !isSelected ')
        tr.nodes([e.target]);
     } else if (metaPressed && isSelected) {
       // if we pressed keys and node was selected
@@ -532,7 +548,10 @@ function fontColor() {
 
 
 function save(e) { 
-  e.preventDefault()                                 
+  e.preventDefault()  
+  gMeme.lines.forEach((txt)=>{
+    txt.konvaTr.nodes([]);
+  })  
   const val = localStorage.getItem('memObject')
   gToDataUrl = stage.toDataURL();
   if (!val) {
@@ -563,6 +582,7 @@ function save(e) {
     closeModal()
     loadImages()
   }
+  
 }
 /**************************************************************************************** */
 function mems() {

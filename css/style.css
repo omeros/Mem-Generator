@@ -312,6 +312,10 @@ flex-flow: column wrap;
 }
 
 
+/* :root {
+    --x: 555px;
+  }
+  height:  var(--x) ; */
 
 /******** MODAL *********/
 .modal {
@@ -321,9 +325,8 @@ flex-flow: column wrap;
     position: fixed;
     top:25px;
     right: 30px;
-    padding: 5px;
+    padding: 10px 10px 40px 10px;
     width : 90%;
-    height: 85fhvw ;
 }
 
 
@@ -426,12 +429,11 @@ cursor: pointer;
 }
 
 .canvas-container{
-     /* font-family: impact;  */
-    top:10px;
+    padding-top: 0px;
     margin:   auto ; 
     padding-left: 1vw;
-    padding-right: 3vw;
-    width: 30vw;
+    padding-right: 3vw; 
+ 
 }
 #container{
     width: 30vw;
@@ -609,7 +611,7 @@ cursor: pointer;
         /* text-shadow: 0 1px 0 #1e1e1e; */
     }
     .modal{
-        height: 750px;
+
     }
     
   .flex{
@@ -622,8 +624,8 @@ cursor: pointer;
        
     }
     #my-canvas{
-        width: 60vw;
-        height: 60vw;
+        /* width: 60vw;
+        height: 60vw; */
     }
     .insid-modal{
         height: 10vw;
@@ -639,9 +641,11 @@ cursor: pointer;
     }
     
     .canvas-container{
-      display: flex;
-      justify-content: center;
-      align-items: center;
+        /* display: flex;
+        justify-content: center;
+        align-items: center; */
+        width: 255px;
+        height: 255px;
     }
     .modal-container{
         width : 90%;
