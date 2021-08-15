@@ -379,8 +379,14 @@ function addText(ev) {
       idy = mytest* 0.32;
       break;
   }
+  let size = 0
+  if(strTxt.length>5){
+    size=0.3
+  }else{
+    size=0.18
+  }
   var myText = new Konva.Text({
-    x: mytestX * 0.18,
+    x: mytestX * size,
     y: idy,
     fontSize:  mytest * 0.15,
     text: strTxt,
