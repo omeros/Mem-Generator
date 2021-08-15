@@ -355,7 +355,7 @@ function addText(ev) {
     mytest = mytest*2
     mytestX += 300
   }else{
-    mytestX += 200
+    mytestX += 600
   }
   const elAdd = document.querySelector('.txt-mem');
   const strTxt = elAdd.value;
