@@ -353,7 +353,7 @@ function addText(ev) {
   console.log('myvw',myvw)
   if(myvw<580){
     mytest = mytest*2
-    mytestX += 30
+    mytestX += 200
   }
   const elAdd = document.querySelector('.txt-mem');
   const strTxt = elAdd.value;
