@@ -382,7 +382,7 @@ function addText(ev) {
     name: 'txt',
     fontFamily :  objDetails.font,
     stroke: objDetails.strokeColor,
-    strokeWidth:2,
+    strokeWidth:1,
   });
 
   myText.on('click', function (event) {
