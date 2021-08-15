@@ -349,9 +349,11 @@ function addText(ev) {
   const objDetails = { konvaObj: null, konvaTr: null, txt: '', lineIdx: 0, minX: 0, maxX: 0, minY: 0, maxY: 0, fontLength: 0, fontSize: 55, font: 'impact', textAlign: 'center', strokeColor: 'black', fontColor: 'white', }
   var myvw = window.innerWidth 
   var mytest =  window.vwLocal
+  var mytestX = 0
   console.log('myvw',myvw)
   if(myvw<580){
     mytest = mytest*2
+    mytestX *=2
   }
   const elAdd = document.querySelector('.txt-mem');
   const strTxt = elAdd.value;
@@ -378,7 +380,7 @@ function addText(ev) {
       break;
   }
   var myText = new Konva.Text({
-    x: mytest * 0.18,
+    x: mytestX * 0.18,
     y: idy,
     fontSize:  mytest * 0.15,
     text: strTxt,
