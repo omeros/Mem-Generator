@@ -353,7 +353,7 @@ function addText(ev) {
   console.log('myvw',myvw)
   if(myvw<580){
     mytest = mytest*2
-    mytestX += 400
+    mytestX += 300
   }else{
     mytestX += 200
   }
@@ -385,7 +385,7 @@ function addText(ev) {
   if(strTxt.length>5){
     size=0.18
   }else{
-    size=0.18
+    size=0.1
   }
   var myText = new Konva.Text({
     x: mytestX * size,
