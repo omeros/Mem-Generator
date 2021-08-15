@@ -347,7 +347,12 @@ function downloadURI(uri, name) {
 
 function addText(ev) {
   const objDetails = { konvaObj: null, konvaTr: null, txt: '', lineIdx: 0, minX: 0, maxX: 0, minY: 0, maxY: 0, fontLength: 0, fontSize: 55, font: 'impact', textAlign: 'center', strokeColor: 'black', fontColor: 'white', }
-
+  var myvw = window.innerWidth 
+  var mytest =  window.vwLocal
+  console.log('myvw',myvw)
+  if(myvw<580){
+    mytest = mytest*2
+  }
   const elAdd = document.querySelector('.txt-mem');
   const strTxt = elAdd.value;
   if(!strTxt){
@@ -360,22 +365,22 @@ function addText(ev) {
   var idy = null
   switch (num) {
     case 0:
-      idy = window.vwLocal * 0.42;
+      idy =mytest * 0.42;
       break;
     case 1:
-      idy = window.vwLocal * 0.8;
+      idy = mytest * 0.8;
       break;
     case 2:
-      idy = window.vwLocal * 0.1;
+      idy = mytest * 0.1;
       break;
     default:
-      idy = window.vwLocal * 0.32;
+      idy = mytest* 0.32;
       break;
   }
   var myText = new Konva.Text({
-    x: window.vwLocal * 0.18,
+    x: mytest * 0.18,
     y: idy,
-    fontSize: window.vwLocal * 0.15,
+    fontSize:  mytest * 0.15,
     text: strTxt,
     draggable: true,
     fill: objDetails.fontColor,
