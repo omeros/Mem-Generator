@@ -164,8 +164,22 @@ var width = window.innerWidth;
 width = width * 0.3
 var height = window.innerHeight;
 
-var sceneWidth = window.innerWidth * 0.3;
-var sceneHeight = window.innerWidth * 0.3;
+
+var sceneWidth = window.innerWidth;
+var sceneHeight = window.innerWidth ;
+console.log('sceneWidth before',sceneWidth)
+
+if(sceneWidth>580){
+  sceneWidth = sceneWidth * 0.3;
+  sceneHeight = sceneHeight * 0.3;
+}else{
+  sceneWidth = sceneWidth * 0.6;
+  sceneHeight = sceneHeight * 0.6;
+}
+// var sceneWidth = window.innerWidth * 0.3;
+// var sceneHeight = window.innerWidth * 0.3;
+
+console.log('sceneWidth after',sceneWidth)
 
 var stage = new Konva.Stage({
   container: 'container',
@@ -246,11 +260,24 @@ function openEditModal(i, isFromLocalStorage) {
   const elModal = document.querySelector('.modal');
   const elDeleteMeme = document.querySelector('.delete-meme');
   elDeleteMeme.setAttribute("data-id", `${gMemes[i - 1].id}`);
+  let vwInOpenEditModal = vw
+  console.log('vwInOpenEditModal before',vwInOpenEditModal)
+  if(vwInOpenEditModal>580){
+    vwInOpenEditModal = vwInOpenEditModal * 0.3;
+   
+  }else{
+    vwInOpenEditModal = vwInOpenEditModal * 0.6;
+  }
 
+
+  console.log('vwInOpenEditModal after',vwInOpenEditModal)
+  console.log('vwInOpenEditModal after',vwInOpenEditModal)
   if (isFromLocalStorage) {
     const img = document.querySelector(`.saved-image${i}`);
     //gStage.container().style.backgroundImage = `url(${img.src.substring(22)})`;
     // gStage.container().style.backgroundImage = img
+
+
 
     /******************** konve upload image to front ************************************* */
     // main API:
@@ -260,8 +287,8 @@ function openEditModal(i, isFromLocalStorage) {
         x: 0,
         y: 0,
         image: imageObj,
-        width: vwLocal,
-        height: vwLocal,
+        width: vwInOpenEditModal,
+        height: vwInOpenEditModal,
       });
       // add the shape to the layer
       layer.add(myImage);
@@ -279,8 +306,8 @@ function openEditModal(i, isFromLocalStorage) {
         x: 0,
         y: 0,
         image: imageObj,
-        width: vwLocal,
-        height: vwLocal,
+        width: vwInOpenEditModal,
+        height: vwInOpenEditModal,
       });
       // add the shape to the layer
       layer.add(myImage);
