@@ -64,12 +64,6 @@ function init() {
   elAddBtn.addEventListener('click', addText);
   elDeleteTxt.addEventListener('click', deleteText);
   //elDeleteMeme.addEventListener('click', deleteMeme);
-
-
-
-
-
-
   elStrokeColor.addEventListener('click', strokeColor);
   elFontColor.addEventListener('click', fontColor);
   elSave.addEventListener('click', save);
@@ -276,8 +270,8 @@ function openEditModal(i, isFromLocalStorage) {
     const img = document.querySelector(`.saved-image${i}`);
     //gStage.container().style.backgroundImage = `url(${img.src.substring(22)})`;
     // gStage.container().style.backgroundImage = img
-
-
+    const elModalImg = document.querySelector(`.image${i}`)
+    gMeme.image = elModalImg;
 
     /******************** konve upload image to front ************************************* */
     // main API:
@@ -294,6 +288,7 @@ function openEditModal(i, isFromLocalStorage) {
       layer.add(myImage);
     };
     imageObj.src = `${elModalImg.src}`;
+    gImageObj = imageObj
     /****************************************************************************** */
   } else {
     const elModalImg = document.querySelector(`.image${i}`)
@@ -318,21 +313,15 @@ function openEditModal(i, isFromLocalStorage) {
   /******************** END konve upload image to front ************************************* */
   elModal.style.display = 'block';
 }
-
 function closeModal() {
   for (let i = 0; i < gMeme.lines.length; i++) {
     gMeme.lines[i].konvaObj.remove()
     gMeme.lines[i].konvaTr.remove()
   }
-
-
   document.querySelector('.txt-mem').value = ""
   const elModal = document.querySelector('.modal');
   elModal.style.display = 'none';
-
 }
-
-
 /************** konva download ***********************************/
 function downloadURI(uri, name) {
   var link = document.createElement('a');
@@ -343,7 +332,6 @@ function downloadURI(uri, name) {
   document.body.removeChild(link);
 }
 /********************* END download ********************************* */
-
 
 function addText(ev) {
   const objDetails = { konvaObj: null, konvaTr: null, txt: '', lineIdx: 0, minX: 0, maxX: 0, minY: 0, maxY: 0, fontLength: 0, fontSize: 55, font: 'impact', textAlign: 'center', strokeColor: 'black', fontColor: 'white', }
@@ -363,7 +351,6 @@ function addText(ev) {
     return
   }
   objDetails.txt = strTxt
-
   const num = gMeme.lines.length
   console.log('gMeme.lines', gMeme.lines)
   var idy = null
@@ -397,29 +384,20 @@ function addText(ev) {
     name: 'txt',
     fontFamily :  objDetails.font,
     stroke: objDetails.strokeColor,
-    strokeWidth:1,
+    strokeWidth:2,
   });
 
   myText.on('click', function (event) {
     console.log('event',event.target.index)
     gTextChoosed = this
-
   });
-
     layer.add(myText);
     var tr = new Konva.Transformer();
     layer.add(tr);
-
     objDetails.konvaObj = myText
     objDetails.konvaTr = tr
-
     gMeme.lines.push(objDetails);
     console.log('gMeme.lines', gMeme.lines)
-
-
-
-
-
 
   /******************* select shape ************************* */
   var selectionRectangle = new Konva.Rect({
