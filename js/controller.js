@@ -401,6 +401,12 @@ function addText(ev) {
     console.log('event',event.target.index)
     gTextChoosed = this
   });
+  myText.on('touchstart', function (event) {
+    console.log('event',event.target.index)
+    gTextChoosed = this
+  });
+
+
     layer.add(myText);
     var tr = new Konva.Transformer();
     layer.add(tr);
@@ -597,8 +603,8 @@ function fontColor() {
   const elCol = document.querySelector(".font-col");
   let stColor = elCol.value
  // gMeme.lines[0].konvaObj.fill(stColor)
+ console.log('gTextChoosed ',gTextChoosed)
   gTextChoosed.fill(stColor)
-  console.log('fontColor ',stColor)
 }
 
 
