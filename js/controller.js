@@ -562,11 +562,35 @@ function doMousePressed(ev) {
 }
 
 
+function choosFonts() {
+  console.log('gTextChoosed ',gTextChoosed)
+  const elChoosFonts = document.querySelector('select[name=choosFonts]');
+  const fontchoosed = +elChoosFonts.value;
+
+  switch (fontchoosed) {
+    case 1:
+      gTextChoosed.fontFamily('impact')
+      break;
+    case 2:
+      gTextChoosed.fontFamily('lato')
+      break;
+    case 3:
+      gTextChoosed.fontFamily('euro')
+      break;
+    default:
+      gTextChoosed.fontFamily('euro')
+      break;
+  }
+}
+
+
+
 function strokeColor(ev) {
   ev.preventDefault();
   const elTxtCol = document.querySelector(".txtcol");
   const txtColor = elTxtCol.value;
   gTextChoosed.stroke(txtColor)
+  console.log('strokeColor ',txtColor)
 }
 
 function fontColor() {
@@ -574,6 +598,7 @@ function fontColor() {
   let stColor = elCol.value
  // gMeme.lines[0].konvaObj.fill(stColor)
   gTextChoosed.fill(stColor)
+  console.log('fontColor ',stColor)
 }
 
 
@@ -652,26 +677,6 @@ function closeModalMem() {
   elModal.style.display = 'none';
   const elMainModal = document.querySelector('.saved-mems-modal-main');
   elMainModal.style.display = 'none';
-}
-
-function choosFonts() {
-  const elChoosFonts = document.querySelector('select[name=choosFonts]');
-  const fontchoosed = +elChoosFonts.value;
-
-  switch (fontchoosed) {
-    case 1:
-      gTextChoosed.fontFamily('impact')
-      break;
-    case 2:
-      gTextChoosed.fontFamily('lato')
-      break;
-    case 3:
-      gTextChoosed.fontFamily('euro')
-      break;
-    default:
-      gTextChoosed.fontFamily('euro')
-      break;
-  }
 }
 
 function uploadImage(file) {
