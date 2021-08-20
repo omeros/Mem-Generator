@@ -569,7 +569,7 @@ function doMousePressed(ev) {
 
 
 function choosFonts() {
-  console.log('gTextChoosed ',gTextChoosed)
+  console.log('gTextChoosed ',gTextChoosed.fontFamily)
   const elChoosFonts = document.querySelector('select[name=choosFonts]');
   const fontchoosed = +elChoosFonts.value;
 
