@@ -6,7 +6,7 @@
     /* grid-template-columns: 1fr 1fr 1fr   ;
     grid-template-rows:    1fr 1fr 1fr 1fr 1fr 1fr   ; */
     grid-gap: 20px;
-    width: 0%;
+    width: 100%;
     background-color:#faf8f8;
 }
 .card-image{
