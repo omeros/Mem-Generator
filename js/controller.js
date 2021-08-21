@@ -588,6 +588,7 @@ function choosFonts() {
   }
           // force update manually
     gTr.forceUpdate();
+    layer.add(gTr);
     window.alert('choosFot fired')
 }
 
