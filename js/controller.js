@@ -331,6 +331,8 @@ function closeModal() {
   document.querySelector('.txt-mem').value = ""
   const elModal = document.querySelector('.modal');
   elModal.style.display = 'none';
+  gMeme.lines=[]; 
+  gTextChoosed = null
 }
 /************** konva download ***********************************/
 function downloadURI(uri, name) {
