@@ -409,6 +409,7 @@ function addText(ev) {
 
     layer.add(myText);
     var tr = new Konva.Transformer();
+    gTr = tr
     layer.add(tr);
     objDetails.konvaObj = myText
     objDetails.konvaTr = tr
@@ -584,8 +585,8 @@ function choosFonts() {
       break;
   }
           // force update manually
-          tr.forceUpdate();
-  window.alert('choosFot fired')
+    gTr.forceUpdate();
+    window.alert('choosFot fired')
 }
 
 
