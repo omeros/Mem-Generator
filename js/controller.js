@@ -18,6 +18,7 @@ var gImageObj
 var gToDataUrl
 var gTr
 var gLayer
+var gMytext
 
 function init() {
   gMeme = {
@@ -409,7 +410,7 @@ function addText(ev) {
     gTextChoosed = this
   });
 
-
+gMytext = myText 
     layer.add(myText);
     var tr = new Konva.Transformer();
     gTr = tr
@@ -569,7 +570,7 @@ function doMousePressed(ev) {
 
 
 function choosFonts() {
-  console.log('gTextChoosed ',gTextChoosed.fontFamily)
+ /// console.log('gTextChoosed ',gTextChoosed)
   const elChoosFonts = document.querySelector('select[name=choosFonts]');
   const fontchoosed = +elChoosFonts.value;
 
@@ -591,7 +592,7 @@ function choosFonts() {
     // gTr.forceUpdate();
     // layer.add(gTr);
     window.alert('choosFot fired - gStage')
-    gStage.forceUpdate()
+    gLayer.draw()
 }
 
 
