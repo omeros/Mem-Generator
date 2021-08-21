@@ -587,6 +587,7 @@ function choosFonts() {
       gTextChoosed.fontFamily('euro')
       break;
   }
+  window.alert('choosFot fired')
 }
 
 
