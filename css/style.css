@@ -29,31 +29,21 @@ body {
 /* COMPONENTS */
 
 /*Header components */
-
-/* .main-screen {
-    visibility: hidden;
-    opacity: 0;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 30%);
-    transition: opacity 0.8s;
-    cursor: pointer;
-} */
-
-
 .main-header {
     height: 130px;
     box-shadow: inset 0 -6px 0 #1e1e1e;
     background-color: #9ccc86;
     width: 100vw;
+    display: flex;
+    justify-content: center;
+}
+.section-container{
+
 }
 .main-container{
-    padding-left: 30px;
-    max-width: 80%;
-    margin:   auto ;
+    padding-left: 0px;
+    max-width: 80vw;
+
     box-sizing: content-box;
 }
 .main-container2{
@@ -588,7 +578,7 @@ cursor: pointer;
     @media screen and (max-width: 480px) {
 
     .main-header{
-        width : 110vw;
+        width : 100vw;
     }
     .main-container2{
         padding-left: 0px;
