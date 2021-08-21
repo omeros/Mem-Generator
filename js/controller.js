@@ -590,8 +590,8 @@ function choosFonts() {
           // force update manually
     // gTr.forceUpdate();
     // layer.add(gTr);
-    gStage.forceUpdate()
     window.alert('choosFot fired - gStage')
+    gStage.forceUpdate()
 }
 
 
