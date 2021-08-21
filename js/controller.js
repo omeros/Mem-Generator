@@ -5,7 +5,6 @@ const vh = Math.max(document.documentElement.clientHeight || 0, window.innerHeig
 var gMouseEvs = ['click', 'mousedown', 'mouseup', 'mouseover', 'mouseleave']
 var gTouchEvs = ['touchstart', 'touchmove', 'touchend']
 var gElCanvas;
-var gCtx;
 var gToPress = false;
 var gMeme;
 var gMemes;
@@ -18,6 +17,7 @@ var gTextChoosed
 var gImageObj 
 var gToDataUrl
 var gTr
+var gLayer
 
 function init() {
   gMeme = {
@@ -193,6 +193,7 @@ var stage = new Konva.Stage({
 
 gStage = stage
 var layer = new Konva.Layer();
+gLayer = layer
 
 stage.add(layer);
 
@@ -511,7 +512,7 @@ function addText(ev) {
       // if no key pressed and the node is not selected
       // select just one
       console.log('!metaPressed && !isSelected ')
-       tr.nodes([e.target]);
+      tr.nodes([e.target]);
     } else if (metaPressed && isSelected) {
       // if we pressed keys and node was selected
       // we need to remove it from selection:
@@ -587,9 +588,10 @@ function choosFonts() {
       break;
   }
           // force update manually
-    gTr.forceUpdate();
-    layer.add(gTr);
-    window.alert('choosFot fired')
+    // gTr.forceUpdate();
+    // layer.add(gTr);
+    gStage.forceUpdate()
+    window.alert('choosFot fired - gStage')
 }
 
 
