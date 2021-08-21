@@ -592,7 +592,7 @@ function choosFonts() {
           // force update manually
     // gTr.forceUpdate();
     // layer.add(gTr);
-    window.alert('fontchoosed',fontchoosed)
+    window.alert(`fontchoosed : ${fontchoosed}`)
     gLayer.draw()
 }
 
