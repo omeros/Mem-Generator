@@ -588,10 +588,11 @@ function choosFonts() {
       gTextChoosed.fontFamily('euro')
       break;
   }
+    console.log('fontchoosed',fontchoosed)
           // force update manually
     // gTr.forceUpdate();
     // layer.add(gTr);
-    //window.alert('choosFot fired - gStage')
+    window.alert('fontchoosed',fontchoosed)
     gLayer.draw()
 }
 
