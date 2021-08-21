@@ -582,7 +582,13 @@ cursor: pointer;
         height: 35vw;
     }
 }
-
+/* .grid-container {
+    grid-template-columns: repeat(2,1fr);
+}
+.saved-mems-grid-container{
+    grid-template-columns: repeat(2,1fr);
+    /* width:60vw; */
+} */
 
     /* Mobile */
     @media screen and (max-width: 480px) {
@@ -597,8 +603,7 @@ cursor: pointer;
         padding-left: 80px;     
     }
     .grid-container {
-        display: flex;
-        flex-direction: column;
+        grid-template-columns: repeat(2,1fr);
     }
     .logo-icon {
         width: 35vw ;
@@ -743,9 +748,7 @@ cursor: pointer;
         border-radius: 10px;
     }
     .saved-mems-grid-container{
-            display: flex;
-            flex-direction: column;
-            width:60vw;
+        grid-template-columns: repeat(2,1fr);
     }
     .saved-mems-img{
         width: 60vw;

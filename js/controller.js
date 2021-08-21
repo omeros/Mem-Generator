@@ -532,10 +532,6 @@ function addText(ev) {
 
 function deleteText() {
   if (((gMeme.lines.length) > 0)&&(gTextChoosed)) {
-    // gMeme.lines[gMeme.lines.length - 1].konvaObj.remove()
-    // gMeme.lines[gMeme.lines.length - 1].konvaTr.remove()
-    // gMeme.lines.pop();
-    // gIsAfterRemoveItem =true
     var indexToRemove =  gMeme.lines.findIndex((objDetails)=>{
       return (objDetails.konvaObj===gTextChoosed)
     })
