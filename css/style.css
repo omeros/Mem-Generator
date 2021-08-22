@@ -386,7 +386,7 @@ cursor: pointer;
 
 .form-modal{
 
-
+    padding-top: 2vw;
 } 
 
 .share-download{
@@ -685,6 +685,7 @@ cursor: pointer;
         padding-top: 0px;
     }
     .form-modal{
+      padding-top:0 ;
     }
     .share-download{
         padding: 10px;
