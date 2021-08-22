@@ -491,7 +491,7 @@ cursor: pointer;
     right: 30px;
     padding: 5px;
     width : 90%;
-    height: 60vh ; 
+    height: 74vh ; 
 }
 .close-about-modal{
     cursor: pointer;
@@ -525,10 +525,10 @@ cursor: pointer;
     display: flex;
     justify-content: flex-start;
     padding-left: 30px;
-   
+    
 }
 .gif{
-    width: 40vw;
+    width: 53vw;
 
 }
 
@@ -540,6 +540,8 @@ cursor: pointer;
     justify-content: center;
     font-size: 2vw;
     padding: 4vw;
+    /* background-color: #cbdee4; */
+   
 }
 .file-btn{
     display: none;
@@ -750,12 +752,16 @@ cursor: pointer;
         border-radius: 10px;
     }
     .gif-container{
-   flex-direction: column;
+        flex-direction: column;
+        height: 55vh;
     }
     .gif{
-        width: 90vw;
-        padding-top: 12vh;
+        width: 80vw;
+        padding-top: 5vh;
 
+    }
+    .welcome-txt{
+        font-size: 5vw;
     }
     .btn-modal{  
         width: 15vw;
