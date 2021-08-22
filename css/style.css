@@ -524,7 +524,7 @@ cursor: pointer;
 .gif-container{
     display: flex;
     justify-content: flex-start;
-    padding-left: 30px;
+    padding-left: 3vw;
     
 }
 .gif{
