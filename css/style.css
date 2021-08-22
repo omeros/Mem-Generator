@@ -488,9 +488,9 @@ cursor: pointer;
     display : none;
     position: fixed;
     top:25px;
-    right: 30px;
+    right: 7vw;
     padding: 5px;
-    width : 90%;
+    width : 85%;
     height: 74vh ; 
 }
 .close-about-modal{
