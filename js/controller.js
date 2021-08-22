@@ -410,7 +410,7 @@ function addText(ev) {
     gTextChoosed = this
   });
 
-gMytext = myText 
+    gMytext = myText 
     layer.add(myText);
     var tr = new Konva.Transformer();
     gTr = tr

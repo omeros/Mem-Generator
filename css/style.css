@@ -366,7 +366,7 @@ cursor: pointer;
 .impact{
     width: 15vw;
     height: 30px; 
-    margin: 15px 0px 15px; 
+    margin: 15px 0px 15px 15px; 
     border-radius: 10px; 
 }
 .stickers{
@@ -391,17 +391,17 @@ cursor: pointer;
 
 .share-download{
     background: #4267b2;
-        border: 1px solid #4267b2;
-        font-size: 2vw;
-        color: #fff;
-        cursor: pointer;
-        font-family: Helvetica, Arial, sans-serif;
-        margin: 0 5px;
-        user-select: none;
-        white-space: nowrap;
-        padding: 5px 10px;
-        border-radius: 3px;
-        text-decoration: none;
+    border: 1px solid #4267b2;
+    font-size: 2vw;
+    color: #fff;
+    cursor: pointer;
+    font-family: Helvetica, Arial, sans-serif;
+    margin: 0 5px;
+    user-select: none;
+    white-space: nowrap;
+    padding: 5px 10px;
+    border-radius: 3px;
+    text-decoration: none;
 }
 
 .insid-modal-container{
@@ -681,6 +681,7 @@ cursor: pointer;
         margin-top: 0px;
         border-radius: 8px;
         margin-bottom: 10px;
+        margin-left:35px ;
         font-size: 22px;
         width: fit-content;
     }
