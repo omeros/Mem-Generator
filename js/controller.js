@@ -221,8 +221,6 @@ stage.container().style.backgroundSize = '30vw 30vw';
 
 /********************** responsive width ******************************************* */
 
-
-
 function fitStageIntoParentContainer() {
   var container = document.querySelector('#stage-parent');
 
@@ -262,12 +260,13 @@ function openEditModalwithSavedMems(i) {
 
 
 
-function openEditModal(i, isFromLocalStorage) {
+async function openEditModal(i, isFromLocalStorage) {
   const elModal = document.querySelector('.modal');
   const elDeleteMeme = document.querySelector('.delete-meme');
   elDeleteMeme.setAttribute("data-id", `${gMemes[i - 1].id}`);
   let vwInOpenEditModal = vw
   console.log('vwInOpenEditModal before',vwInOpenEditModal)
+
   if(vwInOpenEditModal>580){
     vwInOpenEditModal = vwInOpenEditModal * 0.3;
    
@@ -282,7 +281,7 @@ function openEditModal(i, isFromLocalStorage) {
     const img = document.querySelector(`.saved-image${i}`);
     //gStage.container().style.backgroundImage = `url(${img.src.substring(22)})`;
     // gStage.container().style.backgroundImage = img
-    const elModalImg = document.querySelector(`.image${i}`)
+     const elModalImg =  await document.querySelector(`.image${i}`)
     gMeme.image = elModalImg;
 
     /******************** konve upload image to front ************************************* */
@@ -323,7 +322,9 @@ function openEditModal(i, isFromLocalStorage) {
     gImageObj = imageObj
   }
   /******************** END konve upload image to front ************************************* */
+  await layer.draw()
   elModal.style.display = 'block';
+  fitStageIntoParentContainer()
 }
 function closeModal() {
   for (let i = 0; i < gMeme.lines.length; i++) {
@@ -592,8 +593,8 @@ function choosFonts() {
           // force update manually
     // gTr.forceUpdate();
     // layer.add(gTr);
-    window.alert(`fontchoosed : ${fontchoosed}`)
-    gMytext.draw()
+   // window.alert(`fontchoosed : ${fontchoosed}`)
+  //  mytext.draw()
 }
 
 
