@@ -595,6 +595,7 @@ function choosFonts() {
     // layer.add(gTr);
    // window.alert(`fontchoosed : ${fontchoosed}`)
   //  mytext.draw()
+  gTextChoosed.fontFamily('lato')
 }
 
 
