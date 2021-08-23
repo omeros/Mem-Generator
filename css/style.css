@@ -264,9 +264,11 @@ flex-flow: column wrap;
 }
 .font-col{
     border-radius: 5px;
+    cursor: pointer;
 }
 .txtcol{
     border-radius: 5px;
+    cursor: pointer;
 }
 .strok-modal{
     border-radius: 8px;    
@@ -356,6 +358,7 @@ flex-flow: column wrap;
 .big-icon{    
     width: 2.5vw ;
     height: 2.5vw ;
+    cursor: pointer;
 }
 
 .logo-icon{
@@ -389,15 +392,19 @@ border-radius: 50px;
     margin: 1vw 0px 0vw 1vw; 
     border-radius: 10px; 
     font-weight: 700;
+    cursor: pointer;
 }
 .impact2{
     font-weight: 700;
+    cursor: pointer;
 }
 .lato{
     font-weight: 700;
+    cursor: pointer;
 }
 .euro{
     font-weight: 700;
+    cursor: pointer;
 }
 
 .stickers{
