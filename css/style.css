@@ -262,12 +262,31 @@ flex-flow: column wrap;
     padding-left: 5px;
     padding-right: 5px;
 }
+.font-col{
+    border-radius: 5px;
+}
+.txtcol{
+    border-radius: 5px;
+}
+.strok-modal{
+    border-radius: 8px;    
+}
+.stroke-color{
+     
+}
+.font-color{
+    border-radius: 8px; 
+}
+.font-modal{
+    border-radius: 8px; 
+}
+
 .save-btn{
     margin-left: 5px;
     margin-top: 0px;
     background: #4267b2;
-    padding: 5px 10px;
-    font-size: 2vw;
+    padding: 6px 11px;
+    font-size: 1.5vw;
     color: #fff;
     border-radius: 5px;
     cursor: pointer;
@@ -276,8 +295,8 @@ flex-flow: column wrap;
     margin-left: 5px;
     margin-top: 0px;
     background: #4267b2;
-    padding: 5px 10px;
-    font-size: 2vw;
+    padding: 6px 11px;
+    font-size: 1.5vw;
     color: #fff;
     border-radius: 5px;
     cursor: pointer;
@@ -335,8 +354,8 @@ flex-flow: column wrap;
 }
 
 .big-icon{    
-    width: 25px ;
-    height: 25px ;
+    width: 2.5vw ;
+    height: 2.5vw ;
 }
 
 .logo-icon{
@@ -350,6 +369,7 @@ flex-flow: column wrap;
 width: 5vw;
 height: 5vw;
 cursor: pointer;
+border-radius: 50px;
 
 }
 .modal-header{
@@ -365,10 +385,21 @@ cursor: pointer;
 
 .impact{
     width: 15vw;
-    height: 30px; 
-    margin: 15px 0px 15px 15px; 
+    height: 5vh;
+    margin: 1vw 0px 0vw 1vw; 
     border-radius: 10px; 
+    font-weight: 700;
 }
+.impact2{
+    font-weight: 700;
+}
+.lato{
+    font-weight: 700;
+}
+.euro{
+    font-weight: 700;
+}
+
 .stickers{
     width: 373px;
     height: 135px; 
@@ -392,14 +423,14 @@ cursor: pointer;
 .share-download{
     background: #4267b2;
     border: 1px solid #4267b2;
-    font-size: 2vw;
+    font-size: 1.5vw;
     color: #fff;
     cursor: pointer;
     font-family: Helvetica, Arial, sans-serif;
     margin: 0 5px;
     user-select: none;
     white-space: nowrap;
-    padding: 5px 10px;
+    padding: 6px 11px;
     border-radius: 3px;
     text-decoration: none;
 }
@@ -455,12 +486,16 @@ cursor: pointer;
 }
 
 
-.stroke-color{
-    width:20px ;  
-}
+
 .close-modal{
     cursor: pointer;
+    border: none;   
+}
+.close-modal-img{
+    cursor: pointer;
     border: none;
+    width: 2vw;
+    height: 2vw;  
 }
 .closeModalMem{
     border-radius: 8px;
@@ -584,8 +619,10 @@ cursor: pointer;
     .about-modal-footer{
         width: 98%;
     }
+    .canvas-container{
+        padding-right: 0px;
+    }
 }
-
 
     /* Mobile */
     @media screen and (max-width: 480px) {
@@ -788,8 +825,15 @@ cursor: pointer;
   .browse-img{
     width: 40vw;
 
+ }
+ .close-modal-img{
+    width: 5vw;
+    height: 5vw;  
+}
 
-
+.big-icon{    
+    width: 6vw ;
+    height: 6vw ;
 }
 
 }

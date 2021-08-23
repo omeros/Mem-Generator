@@ -39,7 +39,7 @@ function init() {
   closeModalMem()
   const elMems = document.querySelector('.mems');
   const elCloseMems = document.querySelector('.closeModalMem');
-  const elAddBtn = document.querySelector('.add');
+  const elAddBtn = document.querySelector('.add-txt');
   const elDeleteTxt = document.querySelector('.delete-txt');
   // const elDeleteMeme = document.querySelector('.delete-meme');
   // const elCanvas = document.getElementById('my-canvas');
@@ -225,13 +225,21 @@ function fitStageIntoParentContainer() {
 
   // now we need to fit stage into parent container
   var containerWidth = container.offsetWidth;
-  console.log('containerWidth',containerWidth)
+ // console.log('containerWidth',containerWidth)
   console.log('window.innerWidth',window.innerWidth);
   
-  if(window.innerWidth<580){
-    document.querySelector('.canvas-container').style.height = "255px"
-    document.querySelector('.canvas-container').style.width = "255px"
-  }else if(window.innerWidth>=580){
+  if((window.innerWidth<890)&&(window.innerWidth>670)){
+    document.querySelector('.canvas-container').style.width = '270px';
+    document.querySelector('.canvas-container').style.height = '270px';
+    console.log('***********************************')
+ 
+  }else    if((window.innerWidth<670)&&(window.innerWidth>480)){
+    document.querySelector('.canvas-container').style.height = '40vw'
+    document.querySelector('.canvas-container').style.width = '40vw'
+  }else if(window.innerWidth<=480){
+    document.querySelector('.canvas-container').style.height = '50vw'
+    document.querySelector('.canvas-container').style.width = '50vw'
+  }else if(window.innerWidth>=890) {
     document.querySelector('.canvas-container').style.height =  '30vw'
     document.querySelector('.canvas-container').style.width =  '30vw'
   }
