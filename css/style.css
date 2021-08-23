@@ -7,7 +7,7 @@
     grid-template-rows:    1fr 1fr 1fr 1fr 1fr 1fr   ; */
     grid-gap: 20px;
     width: 100%;
-    background-color:#faf8f8;
+    background-color:#ffffff;
 }
 .card-image{
     background-color: #e3e3e3;
