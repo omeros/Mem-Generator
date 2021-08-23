@@ -469,7 +469,9 @@ cursor: pointer;
 }
 
 .upload-img{
-    height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     
 }
 
@@ -552,9 +554,8 @@ cursor: pointer;
     display: none;
 }
 .browse-img{
-    margin-top: 1.5vw;
+
     width: 15vw;
-    margin-left:5vw;
     color:#0278ff;
     cursor: pointer;
 }
@@ -786,8 +787,7 @@ cursor: pointer;
     }
   .browse-img{
     width: 40vw;
-    margin-left:40vw;
-    margin-top:6vw;
+
 
 
 }
