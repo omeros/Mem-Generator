@@ -221,28 +221,36 @@ stage.container().style.backgroundSize = '30vw 30vw';
 /********************** responsive width ******************************************* */
 
 function fitStageIntoParentContainer() {
-  var container = document.querySelector('#stage-parent');
-
-  // now we need to fit stage into parent container
-  var containerWidth = container.offsetWidth;
- // console.log('containerWidth',containerWidth)
-  console.log('window.innerWidth',window.innerWidth);
-  
+ 
   if((window.innerWidth<890)&&(window.innerWidth>670)){
     document.querySelector('.canvas-container').style.width = '270px';
     document.querySelector('.canvas-container').style.height = '270px';
+    document.querySelector('#stage-parent').style.height = '270px'
+    document.querySelector('#stage-parent').style.width = '270px'
     console.log('***********************************')
  
   }else    if((window.innerWidth<670)&&(window.innerWidth>480)){
     document.querySelector('.canvas-container').style.height = '40vw'
     document.querySelector('.canvas-container').style.width = '40vw'
+    document.querySelector('#stage-parent').style.height = '40vw'
+    document.querySelector('#stage-parent').style.width = '40vw'
   }else if(window.innerWidth<=480){
     document.querySelector('.canvas-container').style.height = '58vw'
     document.querySelector('.canvas-container').style.width = '58vw'
+    document.querySelector('#stage-parent').style.height = '58vw'
+    document.querySelector('#stage-parent').style.width = '58vw'
   }else if(window.innerWidth>=890) {
     document.querySelector('.canvas-container').style.height =  '30vw'
     document.querySelector('.canvas-container').style.width =  '30vw'
+    document.querySelector('#stage-parent').style.height = '30vw'
+    document.querySelector('#stage-parent').style.width = '30vw'
   }
+
+  var container = document.querySelector('#stage-parent');
+  // now we need to fit stage into parent container
+  var containerWidth = container.offsetWidth;
+ // console.log('containerWidth',containerWidth)
+  console.log('window.innerWidth',window.innerWidth);
   // but we also make the full scene visible
   // so we need to scale all objects on canvas
   var scale = containerWidth / sceneWidth;
