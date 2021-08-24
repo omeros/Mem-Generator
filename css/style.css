@@ -450,11 +450,11 @@ border-radius: 50px;
 .insid-modal{
     height: 50px;
     width: 27vw;
-    font-size:45px;
+    font-size:5vw;
     margin : 20px;
     border-radius: 10px; 
     text-align: center;
-    padding: 6px 18px 6px 18px;
+    padding: 1vw 2vw 1vw 2vw;
 }
 
 .txt-mem{
@@ -706,11 +706,11 @@ border-radius: 50px;
     .insid-modal{
         height: 10vw;
         width: 55vw;
-        font-size:35px;
+        font-size:7vw;
         margin-top : 5px;
         margin-bottom : 8px;
         border-radius: 10px; 
-        padding: 8px 9px 8px 9px;
+       
     }
     .browse{
         padding-top:50px;
@@ -756,7 +756,7 @@ border-radius: 50px;
         border-radius: 8px;
         margin-bottom: 10px;
         margin-left:35px ;
-        font-size: 22px;
+        font-size: 4vw;
         width: fit-content;
     }
     .share-container{
@@ -783,7 +783,7 @@ border-radius: 50px;
         margin-top: 0px;
         background: #4267b2;
         padding: 8px 10px;
-        font-size: 22px;
+        font-size: 4vw;
         color: #fff;
         border-radius: 8px;
         cursor: pointer;
@@ -793,7 +793,7 @@ border-radius: 50px;
         margin-top: 0px;
         background: #4267b2;
         padding: 8px 10px;
-        font-size: 22px;
+        font-size: 4vw;
         color: #fff;
         border-radius: 8px;
         cursor: pointer;
