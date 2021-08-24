@@ -237,8 +237,8 @@ function fitStageIntoParentContainer() {
     document.querySelector('.canvas-container').style.height = '40vw'
     document.querySelector('.canvas-container').style.width = '40vw'
   }else if(window.innerWidth<=480){
-    document.querySelector('.canvas-container').style.height = '50vw'
-    document.querySelector('.canvas-container').style.width = '50vw'
+    document.querySelector('.canvas-container').style.height = '58vw'
+    document.querySelector('.canvas-container').style.width = '58vw'
   }else if(window.innerWidth>=890) {
     document.querySelector('.canvas-container').style.height =  '30vw'
     document.querySelector('.canvas-container').style.width =  '30vw'
