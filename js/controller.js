@@ -221,15 +221,12 @@ stage.container().style.backgroundSize = '30vw 30vw';
 /********************** responsive width ******************************************* */
 
 function fitStageIntoParentContainer() {
- 
   if((window.innerWidth<890)&&(window.innerWidth>670)){
     document.querySelector('.canvas-container').style.width = '270px';
     document.querySelector('.canvas-container').style.height = '270px';
     document.querySelector('#stage-parent').style.height = '270px'
-    document.querySelector('#stage-parent').style.width = '270px'
-    console.log('***********************************')
- 
-  }else    if((window.innerWidth<670)&&(window.innerWidth>480)){
+    document.querySelector('#stage-parent').style.width = '270px' 
+  }else if((window.innerWidth<670)&&(window.innerWidth>480)){
     document.querySelector('.canvas-container').style.height = '40vw'
     document.querySelector('.canvas-container').style.width = '40vw'
     document.querySelector('#stage-parent').style.height = '40vw'
@@ -254,10 +251,7 @@ function fitStageIntoParentContainer() {
   // but we also make the full scene visible
   // so we need to scale all objects on canvas
   var scale = containerWidth / sceneWidth;
-
-  // var test = (sceneWidth * scale)/4
   stage.width(sceneWidth * scale);
-  // stage.width(test);
   stage.height(sceneHeight * scale);
   stage.scale({ x: scale, y: scale });
 }

@@ -448,13 +448,13 @@ border-radius: 50px;
 }
 
 .insid-modal{
-    height: 50px;
+    height: 4vh;
     width: 27vw;
-    font-size:5vw;
+    font-size:4vw;
     margin : 20px;
     border-radius: 10px; 
     text-align: center;
-    padding: 1vw 2vw 1vw 2vw;
+    padding: 1.5vw 2vw 1.5vw 2vw;
 }
 
 .txt-mem{
