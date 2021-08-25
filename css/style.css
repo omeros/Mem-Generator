@@ -3,8 +3,6 @@
     display: grid;
     grid-template-rows: repeat(3,1fr);
     grid-template-columns: repeat(3,1fr);
-    /* grid-template-columns: 1fr 1fr 1fr   ;
-    grid-template-rows:    1fr 1fr 1fr 1fr 1fr 1fr   ; */
     grid-gap: 20px;
     width: 100%;
     background-color:#ffffff;
@@ -214,15 +212,21 @@ flex-flow: column wrap;
 .saved-mems-modal-main{
     background-color: rgb(232, 238, 238) ;
     box-shadow: 5px 10px 10px 500vh #a8a8a8be;  
-    display : none;
-  
+    display : none; 
     position: absolute;
     top:20px;
-    right: 100px;
+    left: 8vw;
     padding: 0px;
     width : 85vw;
     min-height: 70vh;
     border-radius: 10px;
+    animation: leftmove 0.8s ;
+}
+#saved-mems-modal-main {animation-timing-function: ease;}
+
+@keyframes leftmove {
+    from {left: -100vw;}
+    to {left: 8vw;}
 }
 
 .modal-mems{
@@ -235,8 +239,10 @@ flex-flow: column wrap;
     /* height: inherit;  */
     height: fit-content;
     border-radius: 10px;
-
+   
 }
+
+
 .saved-mems-grid-container{
     display: grid;
     grid-template-rows: repeat(3,1fr);
@@ -262,25 +268,50 @@ flex-flow: column wrap;
     padding-left: 5px;
     padding-right: 5px;
 }
+.font-col:hover{
+    opacity: 0.6;
+}
 .font-col{
     border-radius: 5px;
     cursor: pointer;
+}
+.txtcol:hover{
+    opacity: 0.6;
 }
 .txtcol{
     border-radius: 5px;
     cursor: pointer;
 }
+.strok-modal:hover{
+opacity: 0.6;
+}
 .strok-modal{
     border-radius: 8px;    
 }
-.stroke-color{
-     
+.stroke-color{  
 }
 .font-color{
     border-radius: 8px; 
 }
 .font-modal{
     border-radius: 8px; 
+}
+.share-download{
+    background: #4267b2;
+    border: 1px solid #4267b2;
+    font-size: 1.5vw;
+    color: #fff;
+    cursor: pointer;
+    font-family: Helvetica, Arial, sans-serif;
+    margin: 0 5px;
+    user-select: none;
+    white-space: nowrap;
+    padding: 6px 11px;
+    border-radius: 3px;
+    text-decoration: none;
+}
+.share-download:hover{
+    opacity: 0.6;
 }
 
 .save-btn{
@@ -293,6 +324,9 @@ flex-flow: column wrap;
     border-radius: 5px;
     cursor: pointer;
 }
+.save-btn:hover{
+    opacity: 0.6;
+}
 .delete-meme{
     margin-left: 5px;
     margin-top: 0px;
@@ -302,6 +336,9 @@ flex-flow: column wrap;
     color: #fff;
     border-radius: 5px;
     cursor: pointer;
+}
+.delete-meme:hover{
+    opacity: 0.6;
 }
 .share-container{
     margin-top: 8px;
@@ -327,23 +364,24 @@ flex-flow: column wrap;
 }
 
 
-/* :root {
-    --x: 555px;
-  }
-  height:  var(--x) ; */
-
 /******** MODAL *********/
 .modal {
     background-color: rgb(232, 238, 238) ;
     box-shadow: 5px 10px 10px 500vh #a8a8a8be;    
     display : none;
     position: fixed;
-    top:25px;
-    right: 8vw;
+    top:4vh;
+    right: 6vw;
     padding: 10px 10px 40px 10px;
-    width : 85%;
+    width:85%;
+    animation: rightmove 0.6s ;
 }
+#modal {animation-timing-function: ease;}
 
+@keyframes rightmove {
+    from {right: -100vw;}
+    to {right: 6vw;}
+}
 
 .modal-container{
     width : 90%;
@@ -359,6 +397,9 @@ flex-flow: column wrap;
     width: 2.5vw ;
     height: 2.5vw ;
     cursor: pointer;
+}
+.big-icon:hover{
+    opacity: 0.6;
 }
 
 .logo-icon{
@@ -386,6 +427,9 @@ border-radius: 50px;
     background-color: #9ccc86;
 }
 
+.impact:hover{
+    opacity: 0.4;
+}
 .impact{
     width: 15vw;
     height: 5vh;
@@ -427,24 +471,15 @@ border-radius: 50px;
     padding-top: 2vw;
 } 
 
-.share-download{
-    background: #4267b2;
-    border: 1px solid #4267b2;
-    font-size: 1.5vw;
-    color: #fff;
-    cursor: pointer;
-    font-family: Helvetica, Arial, sans-serif;
-    margin: 0 5px;
-    user-select: none;
-    white-space: nowrap;
-    padding: 6px 11px;
-    border-radius: 3px;
-    text-decoration: none;
-}
+
 
 .insid-modal-container{
     display: flex;
     justify-content: center;
+}
+
+.insid-modal:hover{
+    opacity: 0.6;
 }
 
 .insid-modal{
@@ -456,6 +491,7 @@ border-radius: 50px;
     text-align: center;
     padding: 1.5vw 2vw 1.5vw 2vw;
 }
+
 
 .txt-mem{
     font-family: impact ; 
@@ -531,11 +567,18 @@ border-radius: 50px;
     box-shadow: 5px 10px 10px 500vh #a8a8a8be;    
     display : none;
     position: fixed;
-    top:25px;
+    top: 7vh;
     right: 7vw;
     padding: 5px;
     width : 85%;
     height: 74vh ; 
+    animation: upmove 0.6s ;
+}
+#about-modal{animation-timing-function: ease;}
+
+@keyframes upmove {
+    from {top: -100vw;}
+    to {top: 7vh;}
 }
 .close-about-modal{
     cursor: pointer;
@@ -688,6 +731,7 @@ border-radius: 50px;
     }
     .modal{
         width : 80%;
+        top:8vh;
     }
     
   .flex{

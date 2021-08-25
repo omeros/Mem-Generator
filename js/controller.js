@@ -30,9 +30,6 @@ function init() {
     mousePressed: null
   }
 
-  //gElCanvas = document.getElementById('my-canvas')
-  // gCtx = gElCanvas.getContext('2d')
-
 
   //*********   a BUTTONs   listeners **/*
 
@@ -44,18 +41,10 @@ function init() {
   // const elDeleteMeme = document.querySelector('.delete-meme');
   // const elCanvas = document.getElementById('my-canvas');
 
-
-
-
-
-
-
   const elStrokeColor = document.querySelector('.strok-modal');
   const elFontColor = document.querySelector('.font-modal');
   const elSave = document.querySelector('.save-btn');
   const elAbout = document.querySelector('.about');
-
-
 
   // mouse events
   elMems.addEventListener('click', mems);
@@ -72,20 +61,7 @@ function init() {
 
   // touch events
   // elMems.addEventListener('touchstart', mems);
-  // elCanvas.addEventListener('touchstart', doMousePressed,false);
-  // elCanvas.addEventListener('touchstart', canvasClicked);
-  // elAddBtn.addEventListener('touchstart', addText);
-  // elDelete.addEventListener('touchstart', deleteText);
 
-
-
-
- 
-
-
-  // elStrokeColor.addEventListener('touchstart', strokeColor);
-  // elFontColor.addEventListener('touchstart', fontColor);
-  // elSave.addEventListener('touchstart', save);
 
   /************************ konva eventListener */
   document.getElementById('download').addEventListener(
@@ -105,17 +81,12 @@ function init() {
   loadImages()
 }
 
-// mem.img = mem.img.toDataURL("image/png").replace("image/png", "image/octet-stream");   
-
 function loadImages() {
   const images = getImages()
 
   const val = localStorage.getItem('memObject')
   var memObj
   if (!val) {
-    // memObj = images.map((mem)=>{
-    //   return mem
-    // })
     memObj = images
     saveToStorage('memObject', memObj)
     console.log('save mems to storage;', memObj)
@@ -208,11 +179,6 @@ var newText = new Konva.Text({
 stage.container().style.width = '30vw';
 stage.container().style.height = '30vw';
 stage.container().style.backgroundSize = '30vw 30vw';
-
-
-
-
-
 
 /********************************* end Text Code ******************************************* */
 
