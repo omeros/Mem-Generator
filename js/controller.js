@@ -14,7 +14,7 @@ var gStage = null
 var gIndex
 var gIsAfterRemoveItem
 var gTextChoosed
-var gImageObj 
+var gImageObj
 var gToDataUrl
 var gTr
 var gLayer
@@ -68,9 +68,9 @@ function init() {
     'click',
     function () {
       //removes rectangle from text
-      gMeme.lines.forEach((txt)=>{  
+      gMeme.lines.forEach((txt) => {
         txt.konvaTr.nodes([]);
-      })  
+      })
       var dataURL = stage.toDataURL();
       gToDataUrl = dataURL
       downloadURI(dataURL, 'my-image.png');
@@ -110,7 +110,7 @@ function loadImages() {
         <img  id="${i}" class="card-image image${i++}" src="${meme.img}"  data ="${meme.id}" alt=""> 
     </div>`
   })
-    var arrimg = `<div class="upload-img"> 
+  var arrimg = `<div class="upload-img"> 
     <label  for="imgUploader"  @drop.prevent="handleFile" @dragover.prevent="dragOver"  @dragleave="isDragOver = false"  >
         <img  class="browse-img"  src="https://res.cloudinary.com/omerphoto/image/upload/v1629707256/44517597_l_nsv2ct.jpg">
     </label>
@@ -118,7 +118,7 @@ function loadImages() {
   </div>`;
   strHtmls.push(arrimg)
   document.querySelector('.grid-container').innerHTML = strHtmls.join('')
-  
+
   for (i = 1; i < memObj.length + 1; i++) {
     const elImg = document.querySelector(`.image${i}`);
     elImg.addEventListener('click', function (num) {
@@ -129,7 +129,6 @@ function loadImages() {
 
   }
 
-   
 
 }
 
@@ -141,20 +140,20 @@ var height = window.innerHeight;
 
 
 var sceneWidth = window.innerWidth;
-var sceneHeight = window.innerWidth ;
-console.log('sceneWidth before',sceneWidth)
+var sceneHeight = window.innerWidth;
+console.log('sceneWidth before', sceneWidth)
 
-if(sceneWidth>580){
+if (sceneWidth > 580) {
   sceneWidth = sceneWidth * 0.3;
   sceneHeight = sceneHeight * 0.3;
-}else{
+} else {
   sceneWidth = sceneWidth * 0.6;
   sceneHeight = sceneHeight * 0.6;
 }
 // var sceneWidth = window.innerWidth * 0.3;
 // var sceneHeight = window.innerWidth * 0.3;
 
-console.log('sceneWidth after',sceneWidth)
+console.log('sceneWidth after', sceneWidth)
 
 var stage = new Konva.Stage({
   container: 'container',
@@ -187,24 +186,24 @@ stage.container().style.backgroundSize = '30vw 30vw';
 /********************** responsive width ******************************************* */
 
 function fitStageIntoParentContainer() {
-  if((window.innerWidth<890)&&(window.innerWidth>670)){
+  if ((window.innerWidth < 890) && (window.innerWidth > 670)) {
     document.querySelector('.canvas-container').style.width = '270px';
     document.querySelector('.canvas-container').style.height = '270px';
     document.querySelector('#stage-parent').style.height = '270px'
-    document.querySelector('#stage-parent').style.width = '270px' 
-  }else if((window.innerWidth<670)&&(window.innerWidth>480)){
+    document.querySelector('#stage-parent').style.width = '270px'
+  } else if ((window.innerWidth < 670) && (window.innerWidth > 480)) {
     document.querySelector('.canvas-container').style.height = '40vw'
     document.querySelector('.canvas-container').style.width = '40vw'
     document.querySelector('#stage-parent').style.height = '40vw'
     document.querySelector('#stage-parent').style.width = '40vw'
-  }else if(window.innerWidth<=480){
+  } else if (window.innerWidth <= 480) {
     document.querySelector('.canvas-container').style.height = '58vw'
     document.querySelector('.canvas-container').style.width = '58vw'
     document.querySelector('#stage-parent').style.height = '58vw'
     document.querySelector('#stage-parent').style.width = '58vw'
-  }else if(window.innerWidth>=890) {
-    document.querySelector('.canvas-container').style.height =  '30vw'
-    document.querySelector('.canvas-container').style.width =  '30vw'
+  } else if (window.innerWidth >= 890) {
+    document.querySelector('.canvas-container').style.height = '30vw'
+    document.querySelector('.canvas-container').style.width = '30vw'
     document.querySelector('#stage-parent').style.height = '30vw'
     document.querySelector('#stage-parent').style.width = '30vw'
   }
@@ -212,8 +211,8 @@ function fitStageIntoParentContainer() {
   var container = document.querySelector('#stage-parent');
   // now we need to fit stage into parent container
   var containerWidth = container.offsetWidth;
- // console.log('containerWidth',containerWidth)
-  console.log('window.innerWidth',window.innerWidth);
+  // console.log('containerWidth',containerWidth)
+  console.log('window.innerWidth', window.innerWidth);
   // but we also make the full scene visible
   // so we need to scale all objects on canvas
   var scale = containerWidth / sceneWidth;
@@ -240,23 +239,23 @@ async function openEditModal(i, isFromLocalStorage) {
   const elDeleteMeme = document.querySelector('.delete-meme');
   elDeleteMeme.setAttribute("data-id", `${gMemes[i - 1].id}`);
   let vwInOpenEditModal = vw
-  console.log('vwInOpenEditModal before',vwInOpenEditModal)
+  console.log('vwInOpenEditModal before', vwInOpenEditModal)
 
-  if(vwInOpenEditModal>580){
+  if (vwInOpenEditModal > 580) {
     vwInOpenEditModal = vwInOpenEditModal * 0.3;
-   
-  }else{
+
+  } else {
     vwInOpenEditModal = vwInOpenEditModal * 0.6;
   }
 
 
-  console.log('vwInOpenEditModal after',vwInOpenEditModal)
-  console.log('vwInOpenEditModal after',vwInOpenEditModal)
+  console.log('vwInOpenEditModal after', vwInOpenEditModal)
+  console.log('vwInOpenEditModal after', vwInOpenEditModal)
   if (isFromLocalStorage) {
     const img = document.querySelector(`.saved-image${i}`);
     //gStage.container().style.backgroundImage = `url(${img.src.substring(22)})`;
     // gStage.container().style.backgroundImage = img
-     const elModalImg =  await document.querySelector(`.image${i}`)
+    const elModalImg = await document.querySelector(`.image${i}`)
     gMeme.image = elModalImg;
 
     /******************** konve upload image to front ************************************* */
@@ -309,7 +308,7 @@ function closeModal() {
   document.querySelector('.txt-mem').value = ""
   const elModal = document.querySelector('.modal');
   elModal.style.display = 'none';
-  gMeme.lines=[]; 
+  gMeme.lines = [];
   gTextChoosed = null
 }
 /************** konva download ***********************************/
@@ -325,19 +324,19 @@ function downloadURI(uri, name) {
 
 function addText(ev) {
   const objDetails = { konvaObj: null, konvaTr: null, txt: '', lineIdx: 0, minX: 0, maxX: 0, minY: 0, maxY: 0, fontLength: 0, fontSize: 55, font: 'impact', textAlign: 'center', strokeColor: 'black', fontColor: 'white', }
-  var myvw = window.innerWidth 
-  var mytest =  window.vwLocal
+  var myvw = window.innerWidth
+  var mytest = window.vwLocal
   var mytestX = 1
-  console.log('myvw',myvw)
-  if(myvw<580){
-    mytest = mytest*2
+  console.log('myvw', myvw)
+  if (myvw < 580) {
+    mytest = mytest * 2
     mytestX += 400
-  }else{
+  } else {
     mytestX += 700
   }
   const elAdd = document.querySelector('.txt-mem');
   const strTxt = elAdd.value;
-  if(!strTxt){
+  if (!strTxt) {
     return
   }
   objDetails.txt = strTxt
@@ -346,7 +345,7 @@ function addText(ev) {
   var idy = null
   switch (num) {
     case 0:
-      idy =mytest * 0.42;
+      idy = mytest * 0.42;
       break;
     case 1:
       idy = mytest * 0.8;
@@ -355,46 +354,46 @@ function addText(ev) {
       idy = mytest * 0.1;
       break;
     default:
-      idy = mytest* 0.32;
+      idy = mytest * 0.32;
       break;
   }
   let size = 0
-  if(strTxt.length>5){
-    size=0.1
-  }else{
-    size=0.18
+  if (strTxt.length > 5) {
+    size = 0.1
+  } else {
+    size = 0.18
   }
   var myText = new Konva.Text({
     x: mytestX * size,
     y: idy,
-    fontSize:  mytest * 0.15,
+    fontSize: mytest * 0.15,
     text: strTxt,
     draggable: true,
     fill: objDetails.fontColor,
     name: 'txt',
-    fontFamily :  objDetails.font,
+    fontFamily: objDetails.font,
     stroke: objDetails.strokeColor,
-    strokeWidth:2,
+    strokeWidth: 2,
   });
 
   myText.on('click', function (event) {
-    console.log('event',event.target.index)
+    console.log('event', event.target.index)
     gTextChoosed = this
   });
   myText.on('touchstart', function (event) {
-    console.log('event',event.target.index)
+    console.log('event', event.target.index)
     gTextChoosed = this
   });
 
-    gMytext = myText 
-    layer.add(myText);
-    var tr = new Konva.Transformer();
-    gTr = tr
-    layer.add(tr);
-    objDetails.konvaObj = myText
-    objDetails.konvaTr = tr
-    gMeme.lines.push(objDetails);
-    console.log('gMeme.lines', gMeme.lines)
+  gMytext = myText
+  layer.add(myText);
+  var tr = new Konva.Transformer();
+  gTr = tr
+  layer.add(tr);
+  objDetails.konvaObj = myText
+  objDetails.konvaTr = tr
+  gMeme.lines.push(objDetails);
+  console.log('gMeme.lines', gMeme.lines)
 
   /******************* select shape ************************* */
   var selectionRectangle = new Konva.Rect({
@@ -435,7 +434,7 @@ function addText(ev) {
   });
 
   stage.on('mouseup touchend', () => {
-    console.log(',tr.nodes',tr.nodes())
+    console.log(',tr.nodes', tr.nodes())
     // do nothing if we didn't start selection
     if (!selectionRectangle.visible()) {
       console.log('!selectionRectangle.visible() in mouseup touchend')
@@ -512,14 +511,14 @@ function addText(ev) {
 
 
 function deleteText() {
-  if (((gMeme.lines.length) > 0)&&(gTextChoosed)) {
-    var indexToRemove =  gMeme.lines.findIndex((objDetails)=>{
-      return (objDetails.konvaObj===gTextChoosed)
+  if (((gMeme.lines.length) > 0) && (gTextChoosed)) {
+    var indexToRemove = gMeme.lines.findIndex((objDetails) => {
+      return (objDetails.konvaObj === gTextChoosed)
     })
     gTextChoosed.remove()
-    gMeme.lines.splice(indexToRemove,1)
-  }else if ((gMeme.lines.length) > 0){
-      gMeme.lines[gMeme.lines.length - 1].konvaObj.remove()
+    gMeme.lines.splice(indexToRemove, 1)
+  } else if ((gMeme.lines.length) > 0) {
+    gMeme.lines[gMeme.lines.length - 1].konvaObj.remove()
     gMeme.lines[gMeme.lines.length - 1].konvaTr.remove()
     gMeme.lines.pop();
   }
@@ -546,7 +545,7 @@ function doMousePressed(ev) {
 
 
 function choosFonts() {
-  console.log('gTextChoosed ',gTextChoosed)
+  console.log('gTextChoosed ', gTextChoosed)
   const elChoosFonts = document.querySelector('select[name=choosFonts]');
   const fontchoosed = +elChoosFonts.value;
 
@@ -564,13 +563,13 @@ function choosFonts() {
       gTextChoosed.fontFamily('euro')
       break;
   }
-    console.log('fontchoosed',fontchoosed)
-          // force update manually
-    // gTr.forceUpdate();
-    // layer.add(gTr);
-   // window.alert(`fontchoosed : ${fontchoosed}`)
+  console.log('fontchoosed', fontchoosed)
+  // force update manually
+  // gTr.forceUpdate();
+  // layer.add(gTr);
+  // window.alert(`fontchoosed : ${fontchoosed}`)
   //  mytext.draw()
- // gTextChoosed.fontFamily('lato')
+  // gTextChoosed.fontFamily('lato')
 }
 
 
@@ -580,32 +579,32 @@ function strokeColor(ev) {
   const elTxtCol = document.querySelector(".txtcol");
   const txtColor = elTxtCol.value;
   gTextChoosed.stroke(txtColor)
-  console.log('strokeColor ',txtColor)
+  console.log('strokeColor ', txtColor)
 }
 
 function fontColor() {
   const elCol = document.querySelector(".font-col");
   let stColor = elCol.value
- // gMeme.lines[0].konvaObj.fill(stColor)
- console.log('gTextChoosed ',gTextChoosed)
+  // gMeme.lines[0].konvaObj.fill(stColor)
+  console.log('gTextChoosed ', gTextChoosed)
   gTextChoosed.fill(stColor)
 }
 
 
-function save(e) { 
-  e.preventDefault()  
-  gMeme.lines.forEach((txt)=>{
+function save(e) {
+  e.preventDefault()
+  gMeme.lines.forEach((txt) => {
     txt.konvaTr.nodes([]);
-  })  
+  })
   const val = localStorage.getItem('memObject')
   gToDataUrl = stage.toDataURL();
   if (!val) {
     const memArr = [];
     //const image = gElCanvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
-    var copyImageObj =JSON.parse(JSON.stringify(gImageObj)) 
+    var copyImageObj = JSON.parse(JSON.stringify(gImageObj))
     const newMeme = {
       id: makeId(),
-      img:gToDataUrl
+      img: gToDataUrl
     }
     memArr.push(newMeme)
     saveToStorage('memObject', memArr)
@@ -615,8 +614,8 @@ function save(e) {
 
   } else {
     const memObj = JSON.parse(val)
-   // const image = gElCanvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
-    var copyImageObj =JSON.parse(JSON.stringify(gImageObj)) 
+    // const image = gElCanvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
+    var copyImageObj = JSON.parse(JSON.stringify(gImageObj))
     const newMeme = {
       id: makeId(),
       img: gToDataUrl
@@ -627,7 +626,7 @@ function save(e) {
     closeModal()
     loadImages()
   }
-  
+
 }
 /**************************************************************************************** */
 function mems() {
@@ -701,7 +700,7 @@ function closeAboutModal() {
   elModal.style.display = 'none';
 }
 
-function deleteMeme(ev,element) {
+function deleteMeme(ev, element) {
   ev.preventDefault();
   // console.log('elementtttttttttttttt',element.dataset.id)
   let idxToRemove = gMemes.findIndex((meme) => {
