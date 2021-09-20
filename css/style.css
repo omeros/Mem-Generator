@@ -581,8 +581,15 @@ border-radius: 50px;
     to {top: 7vh;}
 }
 .close-about-modal{
-    cursor: pointer;
     border: none;
+    outline: none;
+    background: none;
+}
+.close-about-modal-img{
+    cursor: pointer;
+    text-decoration: none;
+    width: 1.5vw;
+ 
 }
 .about-modal-header{
     width: 100%;
