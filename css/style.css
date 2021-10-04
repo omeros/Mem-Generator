@@ -588,8 +588,7 @@ border-radius: 50px;
 .close-about-modal-img{
     cursor: pointer;
     text-decoration: none;
-    width: 1.5vw;
- 
+    width: 1.7vw;
 }
 .about-modal-header{
     width: 100%;
@@ -647,7 +646,6 @@ border-radius: 50px;
     display: none;
 }
 .browse-img{
-
     width: 15vw;
     color:#0278ff;
     cursor: pointer;
@@ -893,6 +891,9 @@ border-radius: 50px;
 .big-icon{    
     width: 6vw ;
     height: 6vw ;
+}
+.close-about-modal-img{
+    width: 3.5vw;
 }
 
 }
