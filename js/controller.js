@@ -33,9 +33,9 @@ function init() {
 
   //*********   a BUTTONs   listeners **/*
 
-  closeModalMem()
+  //closeModalMem()
   const elMems = document.querySelector('.mems');
-  const elCloseMems = document.querySelector('.closeModalMem');
+ // const elCloseMems = document.querySelector('.closeModalMem');
   const elAddBtn = document.querySelector('.add-txt');
   const elDeleteTxt = document.querySelector('.delete-txt');
   // const elDeleteMeme = document.querySelector('.delete-meme');
@@ -48,7 +48,7 @@ function init() {
 
   // mouse events
   elMems.addEventListener('click', mems);
-  elCloseMems.addEventListener('click', closeModalMem);
+ // elCloseMems.addEventListener('click', closeModalMem);
   // elCanvas.addEventListener('mousedown', doMousePressed,false);
   // elCanvas.addEventListener('click', canvasClicked);
   elAddBtn.addEventListener('click', addText);
@@ -300,16 +300,21 @@ async function openEditModal(i, isFromLocalStorage) {
   elModal.style.display = 'block';
   fitStageIntoParentContainer()
 }
-function closeModal() {
-  for (let i = 0; i < gMeme.lines.length; i++) {
-    gMeme.lines[i].konvaObj.remove()
-    gMeme.lines[i].konvaTr.remove()
+function closeModal(event) {
+  if (event.target === event.currentTarget){
+    console.log('father event')
+    for (let i = 0; i < gMeme.lines.length; i++) {
+      gMeme.lines[i].konvaObj.remove()
+      gMeme.lines[i].konvaTr.remove()
+    }
+    document.querySelector('.txt-mem').value = ""
+    const elModal = document.querySelector('.modal');
+    elModal.style.display = 'none';
+    gMeme.lines = [];
+    gTextChoosed = null
+  }else{
+    console.log('child event')
   }
-  document.querySelector('.txt-mem').value = ""
-  const elModal = document.querySelector('.modal');
-  elModal.style.display = 'none';
-  gMeme.lines = [];
-  gTextChoosed = null
 }
 /************** konva download ***********************************/
 function downloadURI(uri, name) {
@@ -608,7 +613,7 @@ function save(e) {
     }
     memArr.push(newMeme)
     saveToStorage('memObject', memArr)
-    closeModal()
+    closeModal(e)
     loadImages()
     //console.log('save mems to storage;',memArr)
 
@@ -623,7 +628,7 @@ function save(e) {
     memObj.push(newMeme)
     // console.log('save mems to storage;gToDataUrl',gToDataUrl)
     saveToStorage('memObject', memObj)
-    closeModal()
+    closeModal(e)
     loadImages()
   }
 
@@ -661,11 +666,14 @@ function mems() {
   }
 }
 
-function closeModalMem() {
+function closeModalMem(event) {
+  if ((event.target === event.currentTarget)){
+  console.log(' event div was pressed !!!',event)
   const elModal = document.querySelector('.modal-mems');
   elModal.style.display = 'none';
   const elMainModal = document.querySelector('.saved-mems-modal-main');
   elMainModal.style.display = 'none';
+  }
 }
 
 function uploadImage(file) {
@@ -695,9 +703,11 @@ function openAbout() {
   const elModal = document.querySelector('.about-modal');
   elModal.style.display = 'block';
 }
-function closeAboutModal() {
-  const elModal = document.querySelector('.about-modal');
-  elModal.style.display = 'none';
+function closeAboutModal(event) {
+  if ((event.target === event.currentTarget)){
+    const elModal = document.querySelector('.about-modal');
+    elModal.style.display = 'none';
+  }
 }
 
 function deleteMeme(ev, element) {
@@ -717,7 +727,14 @@ function deleteMeme(ev, element) {
   gImages.splice(idxToRemove, 1)
 
   // console.log('gImages',gImages)
-  closeModal()
+  closeModal(ev)
   loadImages()
+}
+
+function closeAllModals(event){
+  closeModal(event)
+  closeModalMem(event)
+  closeAboutModal(event)
+
 }
 
